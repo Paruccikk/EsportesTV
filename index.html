@@ -113,6 +113,31 @@
         });
       </script>
     
+    <script>
+        // Função para ocultar elementos com características comuns de anúncios
+        function blockAds() {
+            // Selecione todos os elementos que podem ser anúncios
+            var possibleAdSelectors = [
+                'iframe[src*="ads"]',    // Iframes com 'ads' no src
+                'iframe[src*="ad"]',     // Iframes com 'ad' no src
+                'div[id*="ad"]',         // Divs com 'ad' no id
+                'div[class*="ad"]',      // Divs com 'ad' no class
+                'ins[class*="ads"]',     // Ins com 'ads' no class
+                'script[src*="ads"]'     // Scripts com 'ads' no src
+            ];
+    
+            // Para cada seletor possível de anúncio
+            possibleAdSelectors.forEach(selector => {
+                var ads = document.querySelectorAll(selector);
+                ads.forEach(ad => ad.style.display = 'none'); // Oculta o anúncio
+            });
+        }
+    
+        // Executar a função ao carregar a página
+        window.onload = blockAds;
+    </script>
+
+
         <script src="json.js"></script>
         <script src="m3u.js"></script>
 </body>
