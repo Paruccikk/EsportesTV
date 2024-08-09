@@ -115,37 +115,43 @@
     
 
 
-    <div id="players"></div>
-
+    <div id="modal" class="modal">
+        <button class="close-btn" onclick="closeModal()">Fechar</button>
+        <iframe id="player" src="" allow="encrypted-media" allowfullscreen></iframe>
+    </div>
+    
     <script>
-        async function loadPlayers() {
-            // Carregar o JSON com os dados dos players
+        async function loadChannels() {
             const response = await fetch('players.json');
             const data = await response.json();
-            
-            const playersContainer = document.getElementById('players');
+            const channelsContainer = document.getElementById('channels');
     
             data.categorias.forEach(categoria => {
                 categoria.canais.forEach(canal => {
-                    const playerDiv = document.createElement('div');
-                    playerDiv.className = 'video-container';
-                    playerDiv.innerHTML = `
-                        <div class="overlay" id="${canal.nome}-overlay">Clique para Assistir</div>
-                        <iframe id="${canal.nome}" src="" allow="encrypted-media" allowfullscreen></iframe>
+                    const channelDiv = document.createElement('div');
+                    channelDiv.className = 'channel';
+                    channelDiv.innerHTML = `
+                        <img src="${categoria.imagemSrc}" alt="${canal.nome}">
+                        <div class="overlay">${canal.nome}</div>
                     `;
-                    playersContainer.appendChild(playerDiv);
-                    
-                    // Adicionar evento de clique à sobreposição
-                    document.getElementById(`${canal.nome}-overlay`).addEventListener('click', function() {
-                        this.style.display = 'none'; // Remove a sobreposição
-                        document.getElementById(canal.nome).src = canal.iframeSrc; // Carrega o iframe
-                    });
+                    channelDiv.addEventListener('click', () => openPlayer(canal.iframeSrc));
+                    channelsContainer.appendChild(channelDiv);
                 });
             });
         }
     
-        loadPlayers();
-        </script>
+        function openPlayer(src) {
+            document.getElementById('player').src = src;
+            document.getElementById('modal').classList.add('active');
+        }
+    
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            document.getElementById('player').src = '';
+        }
+    
+        loadChannels();
+    </script>
 
         <script src="json.js"></script>
         <script src="m3u.js"></script>
