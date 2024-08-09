@@ -113,37 +113,40 @@
         });
       </script>
     
-<script>
-    // Função para ocultar elementos que podem ser anúncios
-    function blockVideoAds() {
-        // Seletor para iframes e embeds que podem carregar anúncios
-        var adSelectors = [
-            'iframe[src*="ads"]',    // Iframes com 'ads' no src
-            'iframe[src*="ad"]',     // Iframes com 'ad' no src
-            'div[id*="ad"]',         // Divs com 'ad' no id
-            'div[class*="ad"]',      // Divs com 'ad' no class
-            'ins[class*="ads"]',     // Ins com 'ads' no class
-            'script[src*="ads"]'     // Scripts com 'ads' no src
+
+
+    <script>
+    function blockAdIframes() {
+        // Seletor para iframes com URLs suspeitas
+        const adFrameSelectors = [
+            'iframe[src*="ad"]',    // Iframes com 'ad' no src
+            'iframe[src*="ads"]'    // Iframes com 'ads' no src
         ];
 
-        adSelectors.forEach(selector => {
-            var ads = document.querySelectorAll(selector);
-            ads.forEach(ad => ad.style.display = 'none'); // Oculta o anúncio
-        });
+        adFrameSelectors.forEach(selector => {
+            const iframes = document.querySelectorAll(selector);
+            iframes.forEach(frame => {
+                // Tente ocultar o iframe
+                frame.style.display = 'none';
 
-        // Seletor para anúncios em players de vídeo
-        var videoPlayerAds = document.querySelectorAll('video');
-        videoPlayerAds.forEach(player => {
-            var adOverlays = player.querySelectorAll('.ad-overlay, .ad-container'); // Class names for ad overlays
-            adOverlays.forEach(ad => ad.style.display = 'none');
+                // Se desejar, pode redirecionar o iframe para uma URL em branco
+                // frame.src = 'about:blank';
+            });
         });
     }
 
-    // Executar a função ao carregar a página e após os elementos serem carregados
-    window.onload = blockVideoAds;
-    setInterval(blockVideoAds, 5000); // Verificar a cada 5 segundos para lidar com anúncios dinâmicos
+    // Execute a função ao carregar a página e após os elementos serem carregados
+    window.onload = blockAdIframes;
+    setInterval(blockAdIframes, 5000); // Verifica a cada 5 segundos
 </script>
 
+<script>
+    document.addEventListener('beforeunload', function (e) {
+        // Desabilita a abertura de novas janelas ao sair da página
+        e.preventDefault();
+        e.returnValue = '';
+    });
+</script>
 
 
         <script src="json.js"></script>

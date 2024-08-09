@@ -399,3 +399,12 @@ footer {
         width: 120px; /* Reduz a largura dos itens de canal para se adaptar melhor em telas menores */
     }
 }
+
+/* CSS para ocultar possíveis anúncios */
+iframe[src*="ads"] {
+    display: none !important;
+}
+
+div[class*="ad"] {
+    display: none !important;
+}
