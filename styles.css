@@ -1,0 +1,373 @@
+/* Estilo básico */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Cabeçalho */
+header {
+    width: 100%;
+    background-color: #25da1133;
+    color: #000000c0;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    border-radius: 20px; /* Adiciona o arredondamento das bordas */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.menu-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.menu-btn:hover {
+    background-color: #84e02d;
+}
+
+.banner {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.banner img {
+    width: 120%; /* Estica a imagem horizontalmente em 20% */
+    height: auto; /* Mantém a proporção da altura */
+    border-radius: 10px;
+}
+
+
+footer {
+    background-color: #25da1133;
+    color: #000000;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    margin-top: 110px;
+    border-radius: 0 0 1px 1px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.footer-content h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.footer-content p {
+    margin-bottom: 20px;
+}
+
+.socials {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.socials li {
+    margin: 0 10px;
+}
+
+.socials li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.socials li a:hover {
+    transform: scale(1.2);
+    background-color: #ddd;
+}
+
+.socials li a img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-bottom {
+    background-color: #00b33650;
+    padding: 10px 0;
+    border-radius: 0 0 15px 15px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+}
+
+
+
+/* Popup do Canal */
+.channel-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    max-width: 90%;
+    width: 640px;
+    max-height: 80%;
+    overflow: hidden;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.close-btn:hover {
+    background-color: #c82333;
+}
+
+/* Estilo do iframe */
+#channelContainer iframe {
+    width: 100%;
+    height: 360px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* Popup de Vídeo */
+.popup {
+    display: none; /* Inicialmente ocultar */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    max-width: 90%;
+    width: 640px; /* Ajuste a largura conforme necessário */
+    max-height: 80%;
+    overflow: hidden;
+}
+
+.popup-content video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Estilo dos Botões de Categoria e Canal */
+.m3u-category-btn {
+    background-color: #f4f4f4;
+    border: none;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.m3u-category-btn img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.m3u-category-btn:hover {
+    background-color: #ddd;
+}
+
+/* Contêiner de botões de categorias fixo */
+#categories-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Contêiner de categorias */
+.category-section {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Botão de canal */
+.channel-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.channel-item span {
+    font-size: 18px;
+}
+
+/* CSS comum para ambos JSON e M3U */
+
+/* Contêiner de botões de categorias */
+.category-buttons,
+.m3u-category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Botão de categoria */
+.category-btn,
+.m3u-category-btn {
+    background-color: #f4f4f4;
+    border: none;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 150px;
+}
+
+.category-btn img,
+.m3u-category-btn img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.category-btn:hover,
+.m3u-category-btn:hover {
+    background-color: #ddd;
+}
+
+/* Contêiner de botões de canais */
+.channel-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Botão de canal */
+.channel-btn {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 150px;
+}
+
+.channel-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* Ajusta o contêiner de canais para exibir em grade */
+.category-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Estilo do item do canal */
+.channel-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.channel-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}

