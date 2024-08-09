@@ -115,39 +115,37 @@
     
 
 
+    <div id="players"></div>
+
     <script>
-    function blockAdIframes() {
-        // Seletor para iframes com URLs suspeitas
-        const adFrameSelectors = [
-            'iframe[src*="ad"]',    // Iframes com 'ad' no src
-            'iframe[src*="ads"]'    // Iframes com 'ads' no src
-        ];
-
-        adFrameSelectors.forEach(selector => {
-            const iframes = document.querySelectorAll(selector);
-            iframes.forEach(frame => {
-                // Tente ocultar o iframe
-                frame.style.display = 'none';
-
-                // Se desejar, pode redirecionar o iframe para uma URL em branco
-                // frame.src = 'about:blank';
+        async function loadPlayers() {
+            // Carregar o JSON com os dados dos players
+            const response = await fetch('players.json');
+            const data = await response.json();
+            
+            const playersContainer = document.getElementById('players');
+    
+            data.categorias.forEach(categoria => {
+                categoria.canais.forEach(canal => {
+                    const playerDiv = document.createElement('div');
+                    playerDiv.className = 'video-container';
+                    playerDiv.innerHTML = `
+                        <div class="overlay" id="${canal.nome}-overlay">Clique para Assistir</div>
+                        <iframe id="${canal.nome}" src="" allow="encrypted-media" allowfullscreen></iframe>
+                    `;
+                    playersContainer.appendChild(playerDiv);
+                    
+                    // Adicionar evento de clique à sobreposição
+                    document.getElementById(`${canal.nome}-overlay`).addEventListener('click', function() {
+                        this.style.display = 'none'; // Remove a sobreposição
+                        document.getElementById(canal.nome).src = canal.iframeSrc; // Carrega o iframe
+                    });
+                });
             });
-        });
-    }
-
-    // Execute a função ao carregar a página e após os elementos serem carregados
-    window.onload = blockAdIframes;
-    setInterval(blockAdIframes, 5000); // Verifica a cada 5 segundos
-</script>
-
-<script>
-    document.addEventListener('beforeunload', function (e) {
-        // Desabilita a abertura de novas janelas ao sair da página
-        e.preventDefault();
-        e.returnValue = '';
-    });
-</script>
-
+        }
+    
+        loadPlayers();
+        </script>
 
         <script src="json.js"></script>
         <script src="m3u.js"></script>

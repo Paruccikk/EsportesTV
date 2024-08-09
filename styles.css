@@ -408,3 +408,21 @@ iframe[src*="ads"] {
 div[class*="ad"] {
     display: none !important;
 }
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 15px;
+    z-index: 10;
+}
