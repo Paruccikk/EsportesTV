@@ -34,6 +34,17 @@
         <!-- Botões de Canais (JSON) serão adicionados aqui -->
     </div>
 
+
+    <br><br>
+    <!-- Texto de divisória de player de anuncios -->
+    <div>
+
+        <h1> Players sem Anúncios </h1>
+
+    </div>
+
+    <br><br>
+    
     <!-- Contêiner de Categorias e Canais (M3U) -->
     <div id="m3u-container">
         <!-- Botões de Categorias (M3U) serão adicionados aqui -->
@@ -114,44 +125,6 @@
       </script>
     
 
-
-    <div id="modal" class="modal">
-        <button class="close-btn" onclick="closeModal()">Fechar</button>
-        <iframe id="player" src="" allow="encrypted-media" allowfullscreen></iframe>
-    </div>
-    
-    <script>
-        async function loadChannels() {
-            const response = await fetch('players.json');
-            const data = await response.json();
-            const channelsContainer = document.getElementById('channels');
-    
-            data.categorias.forEach(categoria => {
-                categoria.canais.forEach(canal => {
-                    const channelDiv = document.createElement('div');
-                    channelDiv.className = 'channel';
-                    channelDiv.innerHTML = `
-                        <img src="${categoria.imagemSrc}" alt="${canal.nome}">
-                        <div class="overlay">${canal.nome}</div>
-                    `;
-                    channelDiv.addEventListener('click', () => openPlayer(canal.iframeSrc));
-                    channelsContainer.appendChild(channelDiv);
-                });
-            });
-        }
-    
-        function openPlayer(src) {
-            document.getElementById('player').src = src;
-            document.getElementById('modal').classList.add('active');
-        }
-    
-        function closeModal() {
-            document.getElementById('modal').classList.remove('active');
-            document.getElementById('player').src = '';
-        }
-    
-        loadChannels();
-    </script>
 
         <script src="json.js"></script>
         <script src="m3u.js"></script>

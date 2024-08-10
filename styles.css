@@ -218,30 +218,56 @@ footer {
 }
 
 /* Estilo dos Botões de Categoria e Canal */
+/* Configura o container principal como uma grade de 6 colunas */
+#m3u-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 colunas */
+    gap: 10px; /* Espaço entre os itens */
+    padding: 20px;
+}
+
+/* Estilo para os botões de categoria (gêneros) */
 .m3u-category-btn {
-    background-color: #f4f4f4;
-    border: none;
-    border-radius: 8px;
-    margin: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     padding: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     text-align: center;
-    width: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-sizing: border-box;
 }
 
+/* Estilo para as imagens dentro dos botões de categoria */
 .m3u-category-btn img {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
-.m3u-category-btn:hover {
-    background-color: #ddd;
+/* Estilo para a seção de canais dentro de cada categoria */
+.category-section {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 colunas para os canais */
+    gap: 10px;
+    margin-top: 10px;
+    display: none; /* Oculto por padrão */
+}
+
+/* Estilo para cada item de canal */
+.channel-item {
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Estilo para esconder uma seção de canais ativa ao clicar fora dela */
+.active .category-section {
+    display: grid;
 }
 
 /* Contêiner de botões de categorias fixo */
@@ -407,39 +433,4 @@ iframe[src*="ads"] {
 
 div[class*="ad"] {
     display: none !important;
-}
-
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-.modal iframe {
-    width: 80%;
-    height: 80%;
-    border: none;
-    border-radius: 10px;
-}
-.modal.active {
-    display: flex;
-}
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: #ff0000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
 }

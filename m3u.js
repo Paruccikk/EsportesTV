@@ -6,22 +6,24 @@ document.addEventListener('DOMContentLoaded', function() {
             const m3uCategories = {};
             let currentCategory = '';
 
-            lines.forEach((line, index) => {
-                if (line.startsWith('#EXTINF')) {
-                    const categoryMatch = line.match(/group-title="([^"]+)"/);
-                    const nameMatch = line.match(/,([^,]+)$/);
-                    const logoMatch = line.match(/tvg-logo="([^"]+)"/);
-                    const url = lines[index + 1].trim(); // A URL é a próxima linha
+            lines.forEach(line => {
+                line = line.trim();
 
-                    if (categoryMatch && nameMatch && url) {
-                        currentCategory = categoryMatch[1];
-                        if (!m3uCategories[currentCategory]) {
-                            m3uCategories[currentCategory] = [];
-                        }
+                // Verifica se a linha é uma categoria (começa com #gênero#)
+                if (line.includes('#gênero#')) {
+                    currentCategory = line.replace('#gênero#', '').trim();
+                    if (!m3uCategories[currentCategory]) {
+                        m3uCategories[currentCategory] = [];
+                    }
+                } 
+                // Verifica se a linha é um canal (URL do canal com o nome)
+                else if (line && currentCategory) {
+                    const [name, url] = line.split(',');
+                    if (name && url) {
                         m3uCategories[currentCategory].push({
-                            name: nameMatch[1],
-                            url,
-                            logo: logoMatch ? logoMatch[1] : 'https://via.placeholder.com/100' // Default logo if not provided
+                            name: name.trim(),
+                            url: url.trim(),
+                            logo: 'https://via.placeholder.com/100' // Default logo
                         });
                     }
                 }
@@ -44,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const categorySection = document.createElement('div');
                 categorySection.className = 'category-section';
                 categorySection.id = `section-${category.replace(/\s+/g, '-')}`;
+                categorySection.style.display = 'none'; // Oculta a seção inicialmente
 
                 channels.forEach(channel => {
                     const channelItem = document.createElement('div');
@@ -59,16 +62,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 m3uContainer.appendChild(categorySection);
             }
         });
+
+    // Fecha todas as categorias ao clicar fora
+    document.addEventListener('click', function(event) {
+        const target = event.target;
+        if (!target.closest('.m3u-category-btn') && !target.closest('.category-section')) {
+            closeAllCategories();
+        }
+    });
 });
 
 function toggleCategoryVisibility(category) {
-    const section = document.getElementById(`section-${category.replace(/\s+/g, '-')}`);
-    section.style.display = section.style.display === 'none' || !section.style.display ? 'flex' : 'none';
+    const sections = document.querySelectorAll('.category-section');
+    sections.forEach(section => {
+        if (section.id === `section-${category.replace(/\s+/g, '-')}`) {
+            section.style.display = section.style.display === 'none' || !section.style.display ? 'grid' : 'none';
+        } else {
+            section.style.display = 'none'; // Oculta as outras seções
+        }
+    });
+}
+
+
+function closeAllCategories() {
+    const sections = document.querySelectorAll('.category-section');
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
 }
 
 function openVideo(url) {
-    // Remove qualquer popup existente
-    closePopup();
+    closePopup(); // Remove qualquer popup existente
 
     // Cria o novo popup
     const popup = document.createElement('div');
