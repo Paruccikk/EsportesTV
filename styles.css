@@ -398,33 +398,81 @@ footer {
     margin-bottom: 10px;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .banner img {
-        width: 100%; /* Faz com que a imagem do banner ocupe a largura total em dispositivos menores */
-        height: auto;
-    }
-
-    .menu-btn {
-        top: 10px;
-        right: 10px; /* Ajusta a posição do botão do menu */
-    }
-
-    .popup-content {
-        max-width: 100%;
-        width: auto;
-        height: auto;
-    }
-
-    .category-btn,
-    .m3u-category-btn {
-        width: 120px; /* Reduz a largura dos botões de categoria para se adaptar melhor em telas menores */
-    }
-
-    .channel-item {
-        width: 120px; /* Reduz a largura dos itens de canal para se adaptar melhor em telas menores */
+/* Responsividade para telas menores */
+@media (max-width: 1200px) {
+    #m3u-container,
+    .category-section {
+        grid-template-columns: repeat(4, 1fr); /* 4 colunas para telas médias */
     }
 }
+
+@media (max-width: 800px) {
+    #m3u-container,
+    .category-section {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas para telas pequenas */
+    }
+}
+
+@media (max-width: 480px) {
+    #m3u-container,
+    .category-section {
+        grid-template-columns: 1fr; /* 1 coluna para telas muito pequenas */
+    }
+
+    /* Ajuste para popup de vídeo em telas pequenas */
+    .popup-content {
+        width: 90%; /* Popup mais estreito para caber na tela */
+        height: auto;
+    }
+}
+
+/* Seção de canais ativa */
+.active .category-section {
+    display: grid;
+}
+
+/* Estilo para o popup */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%; /* Define a largura padrão do popup */
+    max-width: 600px; /* Largura máxima para telas grandes */
+    height: auto;
+    position: relative;
+}
+
+/* Botão de fechar popup */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Video.js styling (just in case) */
+.vjs-default-skin {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 5px;
+}
+
 
 /* CSS para ocultar possíveis anúncios */
 iframe[src*="ads"] {
