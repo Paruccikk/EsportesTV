@@ -52,7 +52,6 @@ function loadCategoriesFromJSON() {
 
                     button.addEventListener('click', function() {
                         const iframeSrc = this.getAttribute('data-iframe');
-                        const channelContainer = document.getElementById('channelContainer');
                         if (iframeSrc) {
                             channelContainer.innerHTML = `<iframe src="${iframeSrc}" frameborder="0" height="400" width="100%" allow="encrypted-media" allowfullscreen></iframe>`;
                             channelPopup.style.display = 'flex';

@@ -306,20 +306,18 @@ footer {
     font-size: 18px;
 }
 
-/* CSS comum para ambos JSON e M3U */
+/* CSS para JSON */
 
-/* Contêiner de botões de categorias */
-.category-buttons,
-.m3u-category-buttons {
+/* Contêiner de botões de categorias JSON */
+.category-buttons {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: 20px 0;
 }
 
-/* Botão de categoria */
-.category-btn,
-.m3u-category-btn {
+/* Botão de categoria JSON */
+.category-btn {
     background-color: #f4f4f4;
     border: none;
     border-radius: 8px;
@@ -331,19 +329,17 @@ footer {
     width: 150px;
 }
 
-.category-btn img,
-.m3u-category-btn img {
+.category-btn img {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
 }
 
-.category-btn:hover,
-.m3u-category-btn:hover {
+.category-btn:hover {
     background-color: #ddd;
 }
 
-/* Contêiner de botões de canais */
+/* Contêiner de botões de canais JSON */
 .channel-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -351,7 +347,7 @@ footer {
     margin-top: 20px;
 }
 
-/* Botão de canal */
+/* Botão de canal JSON */
 .channel-btn {
     background-color: #ffffff;
     border: 1px solid #ddd;
@@ -376,7 +372,7 @@ footer {
     gap: 10px;
 }
 
-/* Estilo do item do canal */
+/* Estilo do item do canal JSON */
 .channel-item {
     background-color: #ffffff;
     border: 1px solid #ddd;
@@ -397,6 +393,95 @@ footer {
     border-radius: 8px;
     margin-bottom: 10px;
 }
+
+/* CSS para M3U */
+
+/* Contêiner de botões de categorias M3U */
+.m3u-category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Botão de categoria M3U */
+.m3u-category-btn {
+    background-color: #f4f4f4;
+    border: none;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 150px;
+}
+
+.m3u-category-btn img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.m3u-category-btn:hover {
+    background-color: #ddd;
+}
+
+/* Contêiner de botões de canais M3U */
+.channel-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Botão de canal M3U */
+.channel-btn {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 150px;
+}
+
+.channel-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* Ajusta o contêiner de canais para exibir em grade */
+.category-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Estilo do item do canal M3U */
+.channel-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.channel-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
 
 /* Responsividade para telas menores */
 @media (max-width: 1200px) {

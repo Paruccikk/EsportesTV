@@ -9,21 +9,18 @@ document.addEventListener('DOMContentLoaded', function() {
             lines.forEach(line => {
                 line = line.trim();
 
-                // Verifica se a linha é uma categoria (começa com #gênero#)
                 if (line.includes('#gênero#')) {
                     currentCategory = line.replace('#gênero#', '').trim();
                     if (!m3uCategories[currentCategory]) {
                         m3uCategories[currentCategory] = [];
                     }
-                } 
-                // Verifica se a linha é um canal (URL do canal com o nome)
-                else if (line && currentCategory) {
+                } else if (line && currentCategory) {
                     const [name, url] = line.split(',');
                     if (name && url) {
                         m3uCategories[currentCategory].push({
                             name: name.trim(),
                             url: url.trim(),
-                            logo: 'https://via.placeholder.com/100' // Default logo
+                            logo: 'https://via.placeholder.com/100' // Logo padrão
                         });
                     }
                 }
@@ -46,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const categorySection = document.createElement('div');
                 categorySection.className = 'category-section';
                 categorySection.id = `section-${category.replace(/\s+/g, '-')}`;
-                categorySection.style.display = 'none'; // Oculta a seção inicialmente
+                categorySection.style.display = 'none';
 
                 channels.forEach(channel => {
                     const channelItem = document.createElement('div');
@@ -63,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-    // Fecha todas as categorias ao clicar fora
     document.addEventListener('click', function(event) {
         const target = event.target;
         if (!target.closest('.m3u-category-btn') && !target.closest('.category-section')) {
@@ -78,11 +74,10 @@ function toggleCategoryVisibility(category) {
         if (section.id === `section-${category.replace(/\s+/g, '-')}`) {
             section.style.display = section.style.display === 'none' || !section.style.display ? 'grid' : 'none';
         } else {
-            section.style.display = 'none'; // Oculta as outras seções
+            section.style.display = 'none';
         }
     });
 }
-
 
 function closeAllCategories() {
     const sections = document.querySelectorAll('.category-section');
@@ -92,9 +87,8 @@ function closeAllCategories() {
 }
 
 function openVideo(url) {
-    closePopup(); // Remove qualquer popup existente
+    closePopup();
 
-    // Cria o novo popup
     const popup = document.createElement('div');
     popup.className = 'popup';
     popup.innerHTML = `
@@ -108,29 +102,31 @@ function openVideo(url) {
     `;
     document.body.appendChild(popup);
 
-    // Inicializa o player com Video.js
-    videojs('video-player', {
+    let player = videojs('video-player', {
         autoplay: true,
         controls: true,
         fluid: true
-    }, function() {
-        this.src({ src: url, type: 'application/x-mpegURL' });
     });
 
-    // Fecha o popup ao clicar fora dele
+    player.src({ src: url, type: 'application/x-mpegURL' });
+    player.play();
+
     popup.addEventListener('click', (event) => {
         if (event.target === popup) {
             closePopup();
         }
     });
 
-    // Torna o popup visível
     popup.style.display = 'flex';
 }
 
 function closePopup() {
     const popup = document.querySelector('.popup');
     if (popup) {
+        let player = videojs('video-player');
+        if (player) {
+            player.dispose(); // Destruir o player
+        }
         document.body.removeChild(popup);
     }
 }

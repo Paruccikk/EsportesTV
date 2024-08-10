@@ -44,16 +44,21 @@
     </div>
 
     <br><br>
-    
     <!-- Contêiner de Categorias e Canais (M3U) -->
+
     <div id="m3u-container">
         <!-- Botões de Categorias (M3U) serão adicionados aqui -->
     </div>
 
     <!-- Pop-up para reprodução de vídeo -->
     <div id="popup" class="popup" style="display: none;">
-        <button class="close-btn" onclick="closePopup()">Fechar</button>
-        <video id="popup-video-player" controls></video>
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup()">Fechar</button>
+            <video id="video-player" class="video-js vjs-default-skin" controls autoplay width="100%" height="auto">
+                <source src="" type="application/x-mpegURL">
+                Seu navegador não suporta a tag de vídeo.
+            </video>
+        </div>
     </div>
 
     <!-- Popup do Canal -->
