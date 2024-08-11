@@ -56,7 +56,6 @@ header h1 {
     border-radius: 10px;
 }
 
-
 footer {
     background-color: #25da1133;
     color: #000000;
@@ -125,8 +124,6 @@ footer {
     margin: 0;
     font-size: 14px;
 }
-
-
 
 /* Popup do Canal */
 .channel-popup {
@@ -527,7 +524,6 @@ footer {
     margin-bottom: 10px;
 }
 
-
 /* Responsividade para telas menores */
 @media (max-width: 1200px) {
     #m3u-container,
@@ -603,7 +599,6 @@ footer {
     border-radius: 5px;
 }
 
-
 /* CSS para ocultar possíveis anúncios */
 iframe[src*="ads"] {
     display: none !important;
@@ -612,4 +607,3 @@ iframe[src*="ads"] {
 div[class*="ad"] {
     display: none !important;
 }
-
