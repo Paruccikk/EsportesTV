@@ -215,16 +215,19 @@ footer {
 }
 
 /* Estilo dos Botões de Categoria e Canal */
-/* Configura o container principal como uma grade de 6 colunas */
 #m3u-container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6 colunas */
-    gap: 10px; /* Espaço entre os itens */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     padding: 20px;
+    width: 100%;
+    max-width: 1200px;
 }
 
 /* Estilo para os botões de categoria (gêneros) */
 .m3u-category-btn {
+    flex: 1 1 calc(16.66% - 10px); /* 6 colunas, considerando o espaçamento */
+    box-sizing: border-box;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -245,26 +248,35 @@ footer {
 
 /* Estilo para a seção de canais dentro de cada categoria */
 .category-section {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6 colunas para os canais */
+    display: flex;
+    flex-wrap: wrap;
     gap: 10px;
-    margin-top: 10px;
-    display: none; /* Oculto por padrão */
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+    display: none; /* Inicialmente oculto */
 }
 
 /* Estilo para cada item de canal */
 .channel-item {
-    background-color: #e0e0e0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    flex: 1 1 calc(16.66% - 10px); /* Ajusta para colunas, considerando o espaçamento */
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     padding: 10px;
     cursor: pointer;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Estilo para esconder uma seção de canais ativa ao clicar fora dela */
-.active .category-section {
-    display: grid;
+/* Estilo para as imagens dentro dos itens de canal */
+.channel-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 /* Contêiner de botões de categorias fixo */
@@ -329,23 +341,41 @@ footer {
 }
 
 /* Botão de canal */
-.channel-item {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+.channel-item button {
+    background-color: #25da11;
+    color: white;
     padding: 10px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-align: center;
-    width: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
 }
 
-.channel-item span {
-    font-size: 18px;
+/* Responsividade para telas menores */
+@media (max-width: 1200px) {
+    #m3u-container .m3u-category-btn,
+    .category-section .channel-item {
+        flex: 1 1 calc(20% - 10px); /* 5 colunas para telas médias */
+    }
+}
+
+@media (max-width: 800px) {
+    #m3u-container .m3u-category-btn,
+    .category-section .channel-item {
+        flex: 1 1 calc(50% - 10px); /* 2 colunas para telas pequenas */
+    }
+}
+
+@media (max-width: 480px) {
+    #m3u-container .m3u-category-btn,
+    .category-section .channel-item {
+        flex: 1 1 100%; /* 1 coluna para telas muito pequenas */
+    }
+
+    /* Ajuste para popup de vídeo em telas pequenas */
+    .popup-content {
+        width: 90%; /* Popup mais estreito para caber na tela */
+        height: auto;
+    }
 }
 
 /* CSS para JSON */
@@ -434,546 +464,4 @@ footer {
     height: auto;
     border-radius: 8px;
     margin-bottom: 10px;
-}
-
-/* CSS para M3U */
-
-/* Contêiner de botões de categorias M3U */
-.m3u-category-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-/* Botão de categoria M3U */
-.m3u-category-btn {
-    background-color: #f4f4f4;
-    border: none;
-    border-radius: 8px;
-    margin: 10px;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-align: center;
-    width: 150px;
-}
-
-.m3u-category-btn img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-.m3u-category-btn:hover {
-    background-color: #ddd;
-}
-
-/* Contêiner de botões de canais M3U */
-.channel-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-/* Botão de canal M3U */
-.channel-btn {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin: 10px;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-align: center;
-    width: 150px;
-}
-
-.channel-btn:hover {
-    background-color: #f0f0f0;
-}
-
-/* Ajusta o contêiner de canais para exibir em grade */
-.category-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-}
-
-/* Estilo do item do canal M3U */
-.channel-item {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-sizing: border-box;
-}
-
-.channel-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 1200px) {
-    #m3u-container,
-    .category-section {
-        grid-template-columns: repeat(4, 1fr); /* 4 colunas para telas médias */
-    }
-}
-
-@media (max-width: 800px) {
-    #m3u-container,
-    .category-section {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas para telas pequenas */
-    }
-}
-
-@media (max-width: 480px) {
-    #m3u-container,
-    .category-section {
-        grid-template-columns: 1fr; /* 1 coluna para telas muito pequenas */
-    }
-
-    /* Ajuste para popup de vídeo em telas pequenas */
-    .popup-content {
-        width: 90%; /* Popup mais estreito para caber na tela */
-        height: auto;
-    }
-}
-
-/* Seção de canais ativa */
-.active .category-section {
-    display: grid;
-}
-
-/* Estilo para o popup */
-.popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.popup-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    width: 80%; /* Define a largura padrão do popup */
-    max-width: 600px; /* Largura máxima para telas grandes */
-    height: auto;
-    position: relative;
-}
-
-/* Botão de fechar popup */
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: transparent;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* Video.js styling (just in case) */
-.vjs-default-skin {
-    width: 100% !important;
-    height: auto !important;
-    border-radius: 5px;
-}
-
-/* CSS para ocultar possíveis anúncios */
-iframe[src*="ads"] {
-    display: none !important;
-}
-
-div[class*="ad"] {
-    display: none !important;
-}
-
-/* Estilo básico */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Cabeçalho */
-header {
-    width: 100%;
-    background-color: #25da1133;
-    color: #000000c0;
-    padding: 15px;
-    text-align: center;
-    position: relative;
-    border-radius: 20px; /* Adiciona o arredondamento das bordas */
-}
-
-header h1 {
-    margin: 0;
-    font-size: 24px;
-}
-
-.menu-btn {
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    background-color: #000000;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.menu-btn:hover {
-    background-color: #84e02d;
-}
-
-.banner {
-    width: 100%;
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-}
-
-.banner img {
-    width: 110%; /* Estica a imagem horizontalmente em 20% */
-    height: auto; /* Mantém a proporção da altura */
-    border-radius: 10px;
-}
-
-footer {
-    background-color: #25da1133;
-    color: #000000;
-    padding: 20px 0;
-    text-align: center;
-    width: 100%;
-    margin-top: 110px;
-    border-radius: 0 0 1px 1px;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-}
-
-.footer-content h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.footer-content p {
-    margin-bottom: 20px;
-}
-
-.socials {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.socials li {
-    margin: 0 10px;
-}
-
-.socials li a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background-color: #fff;
-    border-radius: 50%;
-    transition: transform 0.3s, background-color 0.3s;
-}
-
-.socials li a:hover {
-    transform: scale(1.2);
-    background-color: #ddd;
-}
-
-.socials li a img {
-    width: 24px;
-    height: 24px;
-}
-
-.footer-bottom {
-    background-color: #00b33650;
-    padding: 10px 0;
-    border-radius: 0 0 15px 15px;
-}
-
-.footer-bottom p {
-    margin: 0;
-    font-size: 14px;
-}
-
-/* Popup do Canal */
-.channel-popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-.popup-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-    max-width: 90%;
-    width: 640px;
-    max-height: 80%;
-    overflow: hidden;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    font-size: 20px;
-    line-height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s;
-}
-
-.close-btn:hover {
-    background-color: #c82333;
-}
-
-/* Estilo do iframe */
-#channelContainer iframe {
-    width: 100%;
-    height: 360px;
-    border-radius: 10px;
-    border: none;
-}
-
-/* Popup de Vídeo */
-.popup {
-    display: none; /* Inicialmente ocultar */
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-}
-
-.popup-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-    max-width: 90%;
-    width: 640px; /* Ajuste a largura conforme necessário */
-    max-height: 80%;
-    overflow: hidden;
-}
-
-.popup-content video {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-/* Estilo dos Botões de Categoria e Canal */
-/* Configura o container principal como uma grade de 6 colunas */
-#m3u-container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6 colunas */
-    gap: 10px; /* Espaço entre os itens */
-    padding: 20px;
-}
-
-/* Estilo para os botões de categoria (gêneros) */
-.m3u-category-btn {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Estilo para as imagens dentro dos botões de categoria */
-.m3u-category-btn img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-/* Estilo para a seção de canais dentro de cada categoria */
-.category-section {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6 colunas para os canais */
-    gap: 10px;
-    margin-top: 10px;
-    display: none; /* Oculto por padrão */
-}
-
-/* Estilo para cada item de canal */
-.channel-item {
-    background-color: #e0e0e0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    text-align: center;
-}
-
-/* Estilo para esconder uma seção de canais ativa ao clicar fora dela */
-.active .category-section {
-    display: grid;
-}
-
-/* Contêiner de botões de categorias fixo */
-/* Grade de categorias */
-#categories-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 1200px;
-}
-
-/* Botão de categoria */
-.m3u-category-btn {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Imagem do logo da categoria */
-.m3u-category-btn img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-/* Seção de categorias */
-.category-section {
-    display: grid; /* Ajustar a visualização para categorias JSON e M3U */
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ajusta para uma coluna de largura mínima */
-    gap: 10px;
-    width: 100%;
-    max-width: 1200px;
-    margin-top: 20px;
-}
-
-/* Item de canal */
-.channel-item {
-    background-color: #e0e0e0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Imagem do logo do canal */
-.channel-item img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-/* Botão de canal */
-.channel-item {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    cursor: pointer;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 1200px) {
-    #m3u-container,
-    .category-section {
-        grid-template-columns: repeat(4, 1fr); /* 4 colunas para telas médias */
-    }
-}
-
-@media (max-width: 800px) {
-    #m3u-container,
-    .category-section {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas para telas pequenas */
-    }
-}
-
-@media (max-width: 480px) {
-    #m3u-container,
-    .category-section {
-        grid-template-columns: 1fr; /* 1 coluna para telas muito pequenas */
-    }
-
-    /* Ajuste para popup de vídeo em telas pequenas */
-    .popup-content {
-        width: 90%; /* Popup mais estreito para caber na tela */
-        height: auto;
-    }
 }
