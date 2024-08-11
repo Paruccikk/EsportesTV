@@ -283,7 +283,7 @@ footer {
 /* Grade de categorias */
 #categories-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 10px;
     margin-bottom: 20px;
     width: 100%;
@@ -295,7 +295,7 @@ footer {
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 10px;
+    padding: 5px; /* Diminuído para telas menores */
     cursor: pointer;
     text-align: center;
     display: flex;
@@ -307,13 +307,13 @@ footer {
 .m3u-category-btn img {
     max-width: 100%;
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 5px; /* Diminuído para telas menores */
 }
 
 /* Seção de categorias */
 .category-section {
     display: none; /* Inicialmente oculto */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 10px;
     width: 100%;
     max-width: 1200px;
@@ -325,7 +325,7 @@ footer {
     background-color: #e0e0e0;
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 10px;
+    padding: 5px; /* Diminuído para telas menores */
     cursor: pointer;
     text-align: center;
     display: flex;
@@ -333,42 +333,32 @@ footer {
     align-items: center;
 }
 
-/* Imagem do logo do canal */
+/* Imagem do canal */
 .channel-item img {
     max-width: 100%;
     height: auto;
-    margin-bottom: 10px;
-}
-
-/* Botão de canal */
-.channel-item button {
-    background-color: #25da11;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    margin-bottom: 5px; /* Diminuído para telas menores */
 }
 
 /* Responsividade para telas menores */
 @media (max-width: 1200px) {
     #m3u-container .m3u-category-btn,
     .category-section .channel-item {
-        flex: 1 1 calc(20% - 10px); /* 5 colunas para telas médias */
+        flex: 1 1 calc(25% - 10px); /* 4 colunas para telas médias */
     }
 }
 
 @media (max-width: 800px) {
     #m3u-container .m3u-category-btn,
     .category-section .channel-item {
-        flex: 1 1 calc(50% - 10px); /* 2 colunas para telas pequenas */
+        flex: 1 1 calc(33.33% - 10px); /* 3 colunas para telas pequenas */
     }
 }
 
 @media (max-width: 480px) {
     #m3u-container .m3u-category-btn,
     .category-section .channel-item {
-        flex: 1 1 100%; /* 1 coluna para telas muito pequenas */
+        flex: 1 1 calc(50% - 10px); /* 2 colunas para telas muito pequenas */
     }
 
     /* Ajuste para popup de vídeo em telas pequenas */
@@ -377,6 +367,14 @@ footer {
         height: auto;
     }
 }
+
+
+
+
+
+
+
+
 
 /* CSS para JSON */
 
