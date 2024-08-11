@@ -6,49 +6,67 @@ document.addEventListener('DOMContentLoaded', function() {
             const m3uCategories = {};
             let currentCategory = '';
 
-            lines.forEach(line => {
+            lines.forEach((line, index) => {
                 line = line.trim();
 
-                if (line.includes('#gênero#')) {
-                    currentCategory = line.replace('#gênero#', '').trim();
-                    if (!m3uCategories[currentCategory]) {
-                        m3uCategories[currentCategory] = [];
+                if (line.startsWith('#EXTINF:')) {
+                    // Extrair informações do canal
+                    const categoryMatch = line.match(/group-title="([^"]+)"/);
+                    const category = categoryMatch ? categoryMatch[1] : 'Sem Categoria';
+                    const nameMatch = line.match(/,(.*)$/);
+                    const name = nameMatch ? nameMatch[1].trim() : 'Sem Nome';
+                    const logoMatch = line.match(/tvg-logo="([^"]+)"/);
+                    const logo = logoMatch ? logoMatch[1] : 'https://via.placeholder.com/100'; // Logo padrão
+
+                    if (!m3uCategories[category]) {
+                        m3uCategories[category] = [];
                     }
-                } else if (line && currentCategory) {
-                    const [name, url] = line.split(',');
-                    if (name && url) {
-                        m3uCategories[currentCategory].push({
-                            name: name.trim(),
-                            url: url.trim(),
-                            logo: 'https://via.placeholder.com/100' // Logo padrão
+
+                    // Adicionar a próxima linha que contém a URL
+                    const url = lines[index + 1]?.trim();
+
+                    if (url) {
+                        m3uCategories[category].push({
+                            name: name,
+                            url: url,
+                            logo: logo
                         });
                     }
                 }
             });
 
-            const m3uContainer = document.getElementById('m3u-container');
+            const categoriesContainer = document.getElementById('categories-container');
+            const channelsContainer = document.getElementById('channels-container');
+
             for (const [category, channels] of Object.entries(m3uCategories)) {
                 const categoryButton = document.createElement('button');
                 categoryButton.className = 'm3u-category-btn';
                 categoryButton.innerHTML = `
-                    <img src="${channels[0].logo}" alt="${category}" />
+                    <img src="${channels[0].logo}" alt="${category}" onerror="this.src='https://via.placeholder.com/100'" />
                     ${category}
                 `;
                 categoryButton.addEventListener('click', () => {
-                    toggleCategoryVisibility(category);
+                    showChannels(category, channels);
                 });
 
-                m3uContainer.appendChild(categoryButton);
+                categoriesContainer.appendChild(categoryButton);
+            }
 
+            function showChannels(category, channels) {
+                // Limpar canais existentes
+                channelsContainer.innerHTML = '';
+
+                // Criar seção para canais
                 const categorySection = document.createElement('div');
                 categorySection.className = 'category-section';
-                categorySection.id = `section-${category.replace(/\s+/g, '-')}`;
-                categorySection.style.display = 'none';
 
                 channels.forEach(channel => {
                     const channelItem = document.createElement('div');
                     channelItem.className = 'channel-item';
-                    channelItem.innerHTML = `<span>${channel.name}</span>`;
+                    channelItem.innerHTML = `
+                        <img src="${channel.logo}" alt="${channel.name}" onerror="this.src='https://via.placeholder.com/100'" />
+                        <span>${channel.name}</span>
+                    `;
                     channelItem.addEventListener('click', () => {
                         openVideo(channel.url);
                     });
@@ -56,35 +74,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     categorySection.appendChild(channelItem);
                 });
 
-                m3uContainer.appendChild(categorySection);
+                channelsContainer.appendChild(categorySection);
+                categorySection.style.display = 'grid'; // Exibir canais
+
+                // Rolar a página para a grade de canais
+                channelsContainer.scrollIntoView({ behavior: 'smooth' });
             }
         });
 
     document.addEventListener('click', function(event) {
         const target = event.target;
-        if (!target.closest('.m3u-category-btn') && !target.closest('.category-section')) {
+        if (!target.closest('.m3u-category-btn') && !target.closest('#channels-container')) {
             closeAllCategories();
         }
     });
 });
-
-function toggleCategoryVisibility(category) {
-    const sections = document.querySelectorAll('.category-section');
-    sections.forEach(section => {
-        if (section.id === `section-${category.replace(/\s+/g, '-')}`) {
-            section.style.display = section.style.display === 'none' || !section.style.display ? 'grid' : 'none';
-        } else {
-            section.style.display = 'none';
-        }
-    });
-}
-
-function closeAllCategories() {
-    const sections = document.querySelectorAll('.category-section');
-    sections.forEach(section => {
-        section.style.display = 'none';
-    });
-}
 
 function openVideo(url) {
     closePopup();

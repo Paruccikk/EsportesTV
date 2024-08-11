@@ -271,19 +271,64 @@ footer {
 }
 
 /* Contêiner de botões de categorias fixo */
+/* Grade de categorias */
 #categories-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
     margin-bottom: 20px;
+    width: 100%;
+    max-width: 1200px;
 }
 
-/* Contêiner de categorias */
+/* Botão de categoria */
+.m3u-category-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Imagem do logo da categoria */
+.m3u-category-btn img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Seção de categorias */
 .category-section {
-    display: none;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: none; /* Inicialmente oculto */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 10px;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+}
+
+/* Item de canal */
+.channel-item {
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Imagem do logo do canal */
+.channel-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 /* Botão de canal */
@@ -567,3 +612,4 @@ iframe[src*="ads"] {
 div[class*="ad"] {
     display: none !important;
 }
+
