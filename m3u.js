@@ -99,21 +99,28 @@ function openVideo(url) {
         <div class="popup-content">
             <button class="close-btn" onclick="closePopup()">×</button>
             <video id="video-player" class="video-js vjs-default-skin" controls autoplay width="100%" height="auto">
-                <source src="${url}" type="application/x-mpegURL">
                 Seu navegador não suporta a tag de vídeo.
             </video>
         </div>
     `;
     document.body.appendChild(popup);
 
-    let player = videojs('video-player', {
-        autoplay: true,
-        controls: true,
-        fluid: true
-    });
-
-    player.src({ src: url, type: 'application/x-mpegURL' });
-    player.play();
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            const videoUrl = URL.createObjectURL(blob);
+            const player = document.getElementById('video-player');
+            player.src = videoUrl;
+            player.play();
+        })
+        .catch(error => {
+            console.error('Failed to load video:', error);
+        });
 
     popup.addEventListener('click', (event) => {
         if (event.target === popup) {
@@ -123,6 +130,7 @@ function openVideo(url) {
 
     popup.style.display = 'flex';
 }
+
 
 function closePopup() {
     const popup = document.querySelector('.popup');

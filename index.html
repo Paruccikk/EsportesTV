@@ -39,46 +39,6 @@
     <!-- Texto de divisória de player de anuncios -->
     <div>
 
-
-        
-
-
-
-
-
-
-
-
-<!-- Player de vídeo -->
-<video id="video-player" controls autoplay width="640" height="360"></video>
-
-<!-- Incluindo o script do hls.js -->
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-
-<script>
-    var video = document.getElementById('video-player');
-    var videoSrc = 'https://jmp2.uk/PlutoTV/6102e04e9ab1db0007a980a1-alt.m3u8';
-
-    if (Hls.isSupported()) {
-        var hls = new Hls();
-        hls.loadSource(videoSrc);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function() {
-            video.play();
-        });
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = videoSrc;
-        video.addEventListener('loadedmetadata', function() {
-            video.play();
-        });
-    } else {
-        alert('Seu navegador não suporta HLS nativamente ou via hls.js.');
-    }
-</script>
-
-
-
-
         <h1> Players sem Anúncios </h1>
 
     </div>
@@ -181,6 +141,9 @@
         <script src="m3u.js"></script>
         <script src="loadChannels.js"></script>
         <script src="https://vjs.zencdn.net/7.11.4/video.js"></script> <!-- Biblioteca Video.js -->
+        <script src="https://cdn.jsdelivr.net/npm/shaka-player@latest/dist/shaka-player.ui.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+
 
 
 </body>
