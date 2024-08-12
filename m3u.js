@@ -105,11 +105,10 @@ function openVideo(url) {
     `;
     document.body.appendChild(popup);
 
-    fetch(url)
+    fetch(url, { mode: 'no-cors' })
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+            // Como a resposta é "opaca", você não terá acesso ao conteúdo.
+            // Ainda assim, você pode tentar usá-la.
             return response.blob();
         })
         .then(blob => {
@@ -131,30 +130,20 @@ function openVideo(url) {
     popup.style.display = 'flex';
 }
 
-fetch(url, { mode: 'no-cors' })
-    .then(response => {
-        // Como a resposta é "opaca", você não terá acesso ao conteúdo.
-        // Ainda assim, você pode tentar usá-la.
-        return response.blob();
-    })
-    .then(blob => {
-        const videoUrl = URL.createObjectURL(blob);
-        const player = document.getElementById('video-player');
-        player.src = videoUrl;
-        player.play();
-    })
-    .catch(error => {
-        console.error('Failed to load video:', error);
-    });
-
-
 function closePopup() {
     const popup = document.querySelector('.popup');
     if (popup) {
-        let player = videojs('video-player');
+        let player = document.getElementById('video-player');
         if (player) {
-            player.dispose(); // Destruir o player
+            player.remove(); // Remove o player para limpar recursos
         }
         document.body.removeChild(popup);
     }
+}
+
+function closeAllCategories() {
+    const sections = document.querySelectorAll('.category-section');
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
 }
