@@ -131,6 +131,22 @@ function openVideo(url) {
     popup.style.display = 'flex';
 }
 
+fetch(url, { mode: 'no-cors' })
+    .then(response => {
+        // Como a resposta é "opaca", você não terá acesso ao conteúdo.
+        // Ainda assim, você pode tentar usá-la.
+        return response.blob();
+    })
+    .then(blob => {
+        const videoUrl = URL.createObjectURL(blob);
+        const player = document.getElementById('video-player');
+        player.src = videoUrl;
+        player.play();
+    })
+    .catch(error => {
+        console.error('Failed to load video:', error);
+    });
+
 
 function closePopup() {
     const popup = document.querySelector('.popup');
