@@ -3,21 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esportes TV Brasil </title>
+    <title> TV Brasil </title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
     <link href="https://vjs.zencdn.net/7.20.2/video-js.css" rel="stylesheet"/>
     <script src="https://vjs.zencdn.net/7.20.2/video.min.js"></script>
+    <link rel="icon" href="https://i.ibb.co/NTfHVYD/Foto-Play-PNG.png" type="image/x-icon">
     
     
 </head>
 <body>
     <!-- Cabeçalho -->
     <header>
-        <h1>Esportes TV Brasil </h1>
+        <nav>
+            <ul class="nav-list"><li><a href="index.html"> TV Brasil </a></li></ul>
+            <div class="mobile-menu">
+              <div class="line1"></div>
+              <div class="line2"></div>
+              <div class="line3"></div>
+            </div>
+            <ul class="nav-list">
+              <li><a href="index.html">Início</a></li>
+              <li><a href="sobre.html">Quem Somos</a></li>
+              <li><a href="contato.html">Contato</a></li>
+            </ul>
+          </nav>
     </header>
 
+    <br><br><br><br><br><br>
     <!-- Banner -->
     <div class="banner">
         <img src="https://i.ibb.co/7VRCVJs/Esportes-TV-Brasil.png" alt="Esportes-TV-Brasil" border="1"></a>
@@ -25,10 +39,25 @@
 
 
     <br><br><br>
+
+
+    <div>
+        
+        <h1> Futebol Ao Vivo </h1>
+
+                    <!-- Seção de Futebol -->
+            <div id="football-section">
+                <h2>Futebol</h2>
+                <div id="football-categories-container"></div>
+            </div>
+
+    </div>
+
+
     <!-- Texto de divisória de player de anuncios -->
     <div>
         
-        <h1> Players sem Anúncios </h1>
+        <h1> Todos os Players </h1>
 
     </div>
 
@@ -145,6 +174,7 @@
 
         <script src="json.js"></script>
         <script src="m3u.js"></script>
+        <script src="football.js"></script>
         <script src="https://vjs.zencdn.net/7.11.4/video.js"></script> <!-- Biblioteca Video.js -->
         <script src="https://cdn.jsdelivr.net/npm/shaka-player@latest/dist/shaka-player.ui.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>

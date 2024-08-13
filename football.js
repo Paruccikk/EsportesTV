@@ -1,10 +1,4 @@
-const m3uUrls = [
-    'https://raw.githubusercontent.com/Paruccikk/EsportesTV/main/canais.m3u',
-    'https://raw.githubusercontent.com/Paruccikk/EsportesTV/main/filmes.m3u',
-    'https://raw.githubusercontent.com/Paruccikk/EsportesTV/main/filmes2.m3u',
-    'https://raw.githubusercontent.com/Paruccikk/EsportesTV/main/filmes3.m3u'
-    // Adicione mais URLs conforme necessário
-];
+const footballM3UUrl = 'https://raw.githubusercontent.com/Paruccikk/EsportesTV/main/futebol.m3u';
 
 async function loadAndProcessM3U(url) {
     try {
@@ -20,8 +14,6 @@ async function loadAndProcessM3U(url) {
 
 function parseM3U(lines) {
     const m3uCategories = {};
-    let currentCategory = '';
-
     lines.forEach((line, index) => {
         line = line.trim();
 
@@ -51,30 +43,23 @@ function parseM3U(lines) {
     return m3uCategories;
 }
 
-async function loadAllM3Us(urls) {
-    const promises = urls.map(url => loadAndProcessM3U(url));
-    const results = await Promise.all(promises);
-    
-    const allCategories = {};
-
-    results.forEach(m3uCategories => {
-        for (const [category, channels] of Object.entries(m3uCategories)) {
-            if (!allCategories[category]) {
-                allCategories[category] = [];
-            }
-            allCategories[category] = allCategories[category].concat(channels);
-        }
-    });
-
-    return allCategories;
+async function loadFootballChannels() {
+    const footballCategories = await loadAndProcessM3U(footballM3UUrl);
+    return footballCategories;
 }
 
-loadAllM3Us(m3uUrls).then(allCategories => {
-    const categoriesContainer = document.getElementById('categories-container');
-    
-    for (const [category, channels] of Object.entries(allCategories)) {
+function displayFootballCategories(footballCategories) {
+    const footballContainer = document.getElementById('football-categories-container');
+    footballContainer.innerHTML = ''; // Limpar o conteúdo existente
+
+    if (Object.keys(footballCategories).length === 0) {
+        footballContainer.innerHTML = '<p>Nenhuma categoria de futebol encontrada.</p>';
+        return;
+    }
+
+    for (const [category, channels] of Object.entries(footballCategories)) {
         const categoryButton = document.createElement('button');
-        categoryButton.className = 'm3u-category-btn';
+        categoryButton.className = 'football-category-btn';
         categoryButton.innerHTML = `
             <img src="${channels[0].logo}" alt="${category}" onerror="this.src='https://i.ibb.co/QN39jVN/TV-Brasil-branco.png'" />
             ${category}
@@ -83,9 +68,9 @@ loadAllM3Us(m3uUrls).then(allCategories => {
             showChannelsInPopup(category, channels);
         });
 
-        categoriesContainer.appendChild(categoryButton);
+        footballContainer.appendChild(categoryButton);
     }
-});
+}
 
 function showChannelsInPopup(category, channels) {
     closePopup();
@@ -174,76 +159,7 @@ function closePopup() {
     }
 }
 
-function closeAllCategories() {
-    const sections = document.querySelectorAll('.category-section');
-    sections.forEach(section => {
-        section.style.display = 'none';
-    });
-}
-
-document.getElementById('search-button').addEventListener('click', async function() {
-    const query = document.getElementById('search-input').value.toLowerCase().trim();
-    const allCategories = await loadAllM3Us(m3uUrls);
-    const channels = parseM3UFromCategories(allCategories);
-
-    displayChannels(channels);
-
-    let found = false;
-    document.querySelectorAll('#categories-container .channel').forEach(channel => {
-        if (channel.dataset.name.toLowerCase().includes(query)) {
-            channel.classList.add('highlight');
-            channel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            found = true;
-        } else {
-            channel.classList.remove('highlight');
-        }
-    });
-
-    if (!found) {
-        alert('Nenhum canal encontrado.');
-    }
-});
-
-function parseM3UFromCategories(categories) {
-    const channels = [];
-    for (const [category, channelList] of Object.entries(categories)) {
-        channelList.forEach(channel => {
-            channels.push({ name: channel.name, category: category });
-        });
-    }
-    return channels;
-}
-
-function displayChannels(channels) {
-    const container = document.getElementById('categories-container');
-    container.innerHTML = '';
-    channels.forEach(channel => {
-        const div = document.createElement('div');
-        div.className = 'channel';
-        div.dataset.name = channel.name;
-        div.textContent = channel.name;
-        container.appendChild(div);
-    });
-}
-
-const player = videojs('video-player');
-
-// Função para remover um botão específico
-function removeButton(buttonClass) {
-    const button = player.controlBar.getChild(buttonClass);
-    if (button) {
-        player.controlBar.removeChild(button);
-    }
-}
-
-// Remove os botões indesejados
-removeButton('vjs-menu-button'); // Ajuste a classe conforme necessário
-
-// Adiciona um novo botão personalizado
-player.controlBar.addChild('button', {
-    text: 'Custom Button',
-    name: 'CustomButton',
-    clickHandler: function() {
-        alert('Custom button clicked!');
-    }
+// Carregar e exibir os canais de futebol separadamente
+loadFootballChannels().then(footballCategories => {
+    displayFootballCategories(footballCategories);
 });
