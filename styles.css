@@ -449,6 +449,7 @@ footer {
 
 
 /* Estilo para o player de vídeo */
+/* Estilo para o container do vídeo */
 .video-container {
     position: relative;
     width: 100%;
@@ -457,17 +458,48 @@ footer {
     background-color: #000; /* Cor de fundo para o vídeo */
 }
 
+/* Estilo para o player de vídeo */
+.video-js {
+    width: 100%;
+    height: 100%;
+}
+
+/* Ocultar botões específicos: download e velocidade de reprodução */
+.vjs-menu-button, /* Botão de menu (velocidade de reprodução) */
+.vjs-control-bar .vjs-control.vjs-icon-cog, /* Botão de configurações (pode incluir download) */
+.vjs-control-bar .vjs-volume-menu-button { /* Botão de volume (pode incluir download) */
+    display: none;
+}
+
+/* Estilo para o botão de tela cheia (para personalizar, se necessário) */
+.vjs-fullscreen-control {
+    background-color: #ff0000; /* Cor de fundo personalizada */
+}
+
+.vjs-fullscreen-control:hover {
+    background-color: #cc0000; /* Cor ao passar o mouse */
+}
+
+/* Estilo para outros botões de controle, se necessário */
+.vjs-play-control,
+.vjs-poster,
+.vjs-mute-control,
+.vjs-volume-control {
+    background-color: #00ff00; /* Cor de fundo personalizada */
+}
+
+.vjs-play-control:hover,
+.vjs-mute-control:hover,
+.vjs-volume-control:hover {
+    background-color: #00cc00; /* Cor ao passar o mouse */
+}
+
 .video-container video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-.video-js {
-    width: 100%;
-    height: auto;
 }
 
 .channel-item {

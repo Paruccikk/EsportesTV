@@ -1,4 +1,5 @@
 const m3uUrls = [
+    'https://raw.githubusercontent.com/Paruccikk/EsportesTV/main/canais.m3u',
     'https://raw.githubusercontent.com/Paruccikk/EsportesTV/main/filmes.m3u',
     'https://raw.githubusercontent.com/Paruccikk/EsportesTV/main/filmes2.m3u',
     'https://raw.githubusercontent.com/Paruccikk/EsportesTV/main/filmes3.m3u'
@@ -224,3 +225,25 @@ function displayChannels(channels) {
         container.appendChild(div);
     });
 }
+
+const player = videojs('video-player');
+
+// Função para remover um botão específico
+function removeButton(buttonClass) {
+    const button = player.controlBar.getChild(buttonClass);
+    if (button) {
+        player.controlBar.removeChild(button);
+    }
+}
+
+// Remove os botões indesejados
+removeButton('vjs-menu-button'); // Ajuste a classe conforme necessário
+
+// Adiciona um novo botão personalizado
+player.controlBar.addChild('button', {
+    text: 'Custom Button',
+    name: 'CustomButton',
+    clickHandler: function() {
+        alert('Custom button clicked!');
+    }
+});
