@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('canais.m3u')
+    fetch('https://drive.google.com/uc?export=download&id=18mpJ99cJdSTMP2Da8rPvmIRpFvT9gtKL')
         .then(response => response.text())
         .then(data => {
             const lines = data.split('\n');
@@ -138,91 +138,83 @@ document.addEventListener('DOMContentLoaded', function() {
             closeAllCategories();
         }
     });
-});
 
-function closePopup() {
-    const popup = document.querySelector('.popup');
-    if (popup) {
-        let player = document.getElementById('video-player');
-        if (player) {
-            player.remove(); // Remove o player para limpar recursos
+    function closePopup() {
+        const popup = document.querySelector('.popup');
+        if (popup) {
+            let player = document.getElementById('video-player');
+            if (player) {
+                player.remove(); // Remove o player para limpar recursos
+            }
+            document.body.removeChild(popup);
         }
-        document.body.removeChild(popup);
     }
-}
 
-function closeAllCategories() {
-    const sections = document.querySelectorAll('.category-section');
-    sections.forEach(section => {
-        section.style.display = 'none';
-    });
-}
+    function closeAllCategories() {
+        const sections = document.querySelectorAll('.category-section');
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+    }
 
-// Função para carregar e processar o arquivo .m3u
-async function loadM3U(url) {
-    try {
-        const response = await fetch(url);
-        const text = await response.text();
-        const lines = text.split('\n');
-        const channels = [];
-        let currentChannel = null;
+    // Função de busca
+    document.getElementById('search-button').addEventListener('click', async function() {
+        const query = document.getElementById('search-input').value.toLowerCase().trim();
+        const channels = await loadM3U('https://drive.google.com/uc?export=download&id=18mpJ99cJdSTMP2Da8rPvmIRpFvT9gtKL'); // Link direto
+        displayChannels(channels);
 
-        lines.forEach(line => {
-            if (line.startsWith('#EXTINF:')) {
-                const name = line.split(',')[1];
-                currentChannel = { name };
-            } else if (line.startsWith('http') && currentChannel) {
-                currentChannel.url = line;
-                channels.push(currentChannel);
-                currentChannel = null;
+        // Limpar destaques e rolar para o item correspondente
+        let found = false;
+        document.querySelectorAll('#categories-container .channel').forEach(channel => {
+            if (channel.dataset.name.toLowerCase().includes(query)) {
+                channel.classList.add('highlight');
+                channel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                found = true;
+            } else {
+                channel.classList.remove('highlight');
             }
         });
 
-        return channels;
-    } catch (error) {
-        console.error('Erro ao carregar o arquivo M3U:', error);
-        return [];
-    }
-}
-
-// Função para exibir canais
-function displayChannels(channels) {
-    const container = document.getElementById('categories-container');
-    container.innerHTML = ''; // Limpar o conteúdo anterior
-    channels.forEach(channel => {
-        const div = document.createElement('div');
-        div.className = 'channel';
-        div.dataset.name = channel.name;
-        div.textContent = channel.name;
-        container.appendChild(div);
-    });
-}
-
-// Função de busca
-document.getElementById('search-button').addEventListener('click', async function() {
-    const query = document.getElementById('search-input').value.toLowerCase().trim();
-    const channels = await loadM3U('caminho/para/seu/arquivo.m3u'); // Atualize o caminho do arquivo
-    displayChannels(channels);
-
-    // Função para rolar para o elemento visível
-    function scrollToElement(element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-    // Limpar destaques e rolar para o item correspondente
-    let found = false;
-    document.querySelectorAll('#categories-container .channel').forEach(channel => {
-        if (channel.dataset.name.toLowerCase().includes(query)) {
-            channel.classList.add('highlight');
-            scrollToElement(channel);
-            found = true;
-        } else {
-            channel.classList.remove('highlight');
+        if (!found) {
+            alert('Nenhum canal encontrado.');
         }
     });
 
-    if (!found) {
-        alert('Nenhum canal encontrado.');
+    async function loadM3U(url) {
+        try {
+            const response = await fetch(url);
+            const text = await response.text();
+            const lines = text.split('\n');
+            const channels = [];
+            let currentChannel = null;
+
+            lines.forEach(line => {
+                if (line.startsWith('#EXTINF:')) {
+                    const name = line.split(',')[1];
+                    currentChannel = { name };
+                } else if (line.startsWith('http') && currentChannel) {
+                    currentChannel.url = line;
+                    channels.push(currentChannel);
+                    currentChannel = null;
+                }
+            });
+
+            return channels;
+        } catch (error) {
+            console.error('Erro ao carregar o arquivo M3U:', error);
+            return [];
+        }
+    }
+
+    function displayChannels(channels) {
+        const container = document.getElementById('categories-container');
+        container.innerHTML = ''; // Limpar o conteúdo anterior
+        channels.forEach(channel => {
+            const div = document.createElement('div');
+            div.className = 'channel';
+            div.dataset.name = channel.name;
+            div.textContent = channel.name;
+            container.appendChild(div);
+        });
     }
 });
-
