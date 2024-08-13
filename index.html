@@ -30,23 +30,66 @@
                 <li><a href="sobre.html">Quem Somos</a></li>
                 <li><a href="contato.html">Contato</a></li>
             </ul>
+                                <!-- Botão para abrir o guia de conexão -->
+                                <button id="conectbotaotv-btn">Conectar à TV</button>
+
         </nav>
     </header>
-    
+</head>
+
+<body>
+
+   <!-- Popup com instruções -->
+<div id="conectbotaotv-popup" class="conectbotaotv-popup conectbotaotv-hidden">
+    <div class="conectbotaotv-popup-content">
+        <button class="conectbotaotv-close-btn" onclick="conectbotaotvClosePopup()">×</button>
+        <h2>Como Conectar Seu Smartphone à TV</h2>
+        <ol>
+            <p>1° Conecte o smartphone e a TV na mesma rede Wi-Fi.</p>
+            <p>2° Puxe a barra de notificações para abrir o painel rápido no seu celular Android.</p>
+            <p>3° Toque no ícone Smart View no seu celular.</p>
+            <p>4° Selecione sua TV na lista de dispositivos disponíveis e toque em "Iniciar agora".</p>
+        </ol>
+    </div>
+</div>
+
+<script>
+    // Referência ao botão e ao popup
+    const conectbotaotvBtn = document.getElementById('conectbotaotv-btn');
+    const conectbotaotvPopup = document.getElementById('conectbotaotv-popup');
+
+    // Função para abrir o popup
+    conectbotaotvBtn.addEventListener('click', () => {
+        conectbotaotvPopup.classList.remove('conectbotaotv-hidden'); // Remove a classe 'conectbotaotv-hidden' para exibir o popup
+    });
+
+    // Função para fechar o popup
+    function conectbotaotvClosePopup() {
+        conectbotaotvPopup.classList.add('conectbotaotv-hidden'); // Adiciona a classe 'conectbotaotv-hidden' para esconder o popup
+    }
+</script>
+
+
+
 
     <br><br><br><br><br><br>
-    <!-- Banner -->
-    <div class="banner">
-        <img src="https://i.ibb.co/7VRCVJs/Esportes-TV-Brasil.png" alt="Esportes-TV-Brasil" border="1"></a>
-    </div>
+<!-- GIF redimensionado com borda arredondada -->
+        <div style="text-align: center;">
+            <img src="/GifBanner.gif" 
+                alt="GIF fora do ar" 
+                width="980" 
+                height="300" 
+                style="border: 5px solid #b1aeae70; border-radius: 15px;" />
+        </div>
 
 
-    <br><br><br>
+
+
+
+    <br><br><br><br><br>
 
 
     <div>
-        
-        <h1> Futebol Ao Vivo </h1>
 
                     <!-- Seção de Futebol -->
             <div id="football-section">
@@ -56,6 +99,7 @@
 
     </div>
 
+    <br><br><br><br><br>
 
     <!-- Texto de divisória de player de anuncios -->
     <div>
@@ -65,7 +109,7 @@
     </div>
 
 
-    <br><br>
+    <br><br><br>
     <!-- Contêiner de Categorias e Canais (M3U) -->
 
     <div id="categories-container">

@@ -185,6 +185,7 @@ document.getElementById('search-button').addEventListener('click', async functio
     const query = document.getElementById('search-input').value.toLowerCase().trim();
     const allCategories = await loadAllM3Us(m3uUrls);
     const channels = parseM3UFromCategories(allCategories);
+    
 
     displayChannels(channels);
 

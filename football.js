@@ -163,3 +163,4 @@ function closePopup() {
 loadFootballChannels().then(footballCategories => {
     displayFootballCategories(footballCategories);
 });
+

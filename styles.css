@@ -663,3 +663,65 @@ footer {
     background-color: #e2e6ea;
 }
 
+
+/* Estilo do botão */
+#conectbotaotv-btn {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Estilo do popup */
+.conectbotaotv-popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.conectbotaotv-popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 80%;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.conectbotaotv-popup-content h2 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.conectbotaotv-popup-content ol {
+    margin-top: 10px;
+}
+
+/* Estilo do botão de fechar */
+.conectbotaotv-close-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+}
+
+/* Oculta o popup inicialmente */
+.conectbotaotv-hidden {
+    display: none;
+}
