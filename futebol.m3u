@@ -1,0 +1,116 @@
+#EXTINF:-1 tvg-id="SporTV" tvg-name="" group-title="MultiSports" tvg-logo="https://tv-online.vercel.app/logo-sportv.png",CE SportTV 🟢
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/178
+#EXTINF:-1 tvg-id="SporTV2" tvg-name="" group-title="MultiEsportes" tvg-logo="https://tv-online.vercel.app/logo-sportv2.png",CE SporTV 2 🟢
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/172
+#EXTINF:-1 tvg-id="SporTV3" group-title="MultiEsportes" tvg-logo="https://tv-online.vercel.app/sportv3.png",CE SporTV 3 🟢
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/175
+
+#EXTINF:-1 tvg-id="SporTV" tvg-logo="https://imgur.com/bwqLqyg.png" group-title="Canais | SporTV",SporTV HD
+https://abc.embedmax.site/sportv1/tracks-v1a1/mono.m3u8
+
+#EXTINF:-1 tvg-id="SporTV" tvg-logo="https://imgur.com/bwqLqyg.png" group-title="Canais | SporTV",SporTV FHD
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/178
+
+#EXTINF:-1 tvg-id="SporTV" tvg-logo="https://imgur.com/bwqLqyg.png" group-title="Canais | SporTV",SporTV FHD [Alterar]
+http://cdnexpress.homelinux.net:80/live/ca5c20ae5bcb1c5f65998accf9920342/6a3cd02e803ddf024eb777f0101a2702/23.m3u8
+
+#EXTINF:-1 tvg-id="SporTV" tvg-logo="https://imgur.com/bwqLqyg.png" group-title="Canais | SporTV",SporTV UHD
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/183
+
+#EXTINF:-1 tvg-id="SporTV" tvg-logo="https://imgur.com/bwqLqyg.png" group-title="Canais | SporTV",SporTV 4K
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/183
+
+#EXTINF:-1 tvg-id="SporTV2" tvg-name="SporTV 2" tvg-logo="https://imgur.com/ZpjPkqS.png" group-title="Canais | SporTV",SporTV 2 SD
+http://dzcdn.vood.top:80/hls/551_.m3u8
+
+#EXTINF:-1 tvg-id="SporTV2" tvg-name="SporTV 2" tvg-logo="https://imgur.com/ZpjPkqS.png" group-title="Canais | SporTV",SporTV 2 HD
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/172
+
+#EXTINF:-1 tvg-id="SporTV2" tvg-name="SporTV 2" tvg-logo="https://imgur.com/ZpjPkqS.png" group-title="Canais | SporTV",SporTV 2 FHD
+https://abc.embedmax.site/sportv2/tracks-v1a1/mono.m3u8
+
+#EXTINF:-1 tvg-id="SporTV3" tvg-name="SporTV 3" tvg-logo="https://imgur.com/ttHpdGp.png" group-title="Canais | SporTV",SporTV 3 SD
+http://dzcdn.vood.top:80/hls/556_.m3u8
+
+#EXTINF:-1 tvg-id="SporTV3" tvg-name="SporTV 3" tvg-logo="https://imgur.com/ttHpdGp.png" group-title="Canais | SporTV",SporTV 3 HD
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/175
+
+#EXTINF:-1 tvg-id="SporTV3" tvg-name="SporTV 3" tvg-logo="https://imgur.com/ttHpdGp.png" group-title="Canais | SporTV",SporTV 3 FHD
+https://abc.embedmax.site/sportv3/tracks-v1a1/mono.m3u8
+
+#EXTINF:-1 tvg-id="PREMIEREFC" group-title="MultiSports" tvg-logo="https://static.guiadetv.com/channel/MEO9lxSgmC5CAwsKhTHPzZCZX9ZFE7lRFqA48ElS.png",CE Premiere Clubes 🟢
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/164
+#EXTINF:-1 tvg-id="PREMIERE2" group-title="MultiSports" tvg-logo="https://static.guiadetv.com/channel/ZaLxlvm4ijaSAtTwfhJTrvYjmiaFi8SciyiHwh9l.png",CE Premiere 2 🟢
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/150
+#EXTINF:-1 tvg-id="PREMIERE3" group-title="MultiSports" tvg-logo="https://static.guiadetv.com/channel/FDXXZa0cRf9ZkXwruyrL8YJCwiJW8k2wEwMmiEeI.png",CE Premiere 3 🟢
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/152
+#EXTINF:-1 tvg-id="PREMIERE4" group-title="MultiSports" tvg-logo="https://static.guiadetv.com/channel/76M6sIBSXfOQ1gs8huZq9blVihxjUYBk38SH5G1S.png",CE Premiere 4 🟢
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/154
+#EXTINF:-1 tvg-id="PREMIERE5" group-title="MultiSports" tvg-logo="https://static.guiadetv.com/channel/RR5YcaXv67v9AKcLHXOyY9YuRBmNOPgC028PU8vV.png",CE Premiere 5 🟢
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/156
+#EXTINF:-1 tvg-id="PREMIERE6" group-title="MultiSports" tvg-logo="https://static.guiadetv.com/channel/mHFMJM5sGQnKorD0HnFXLO2JcUlHvEObjSZiHknP.png",CE Premiere 6 🟢
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/158
+#EXTINF:-1 tvg-id="PREMIERE7" group-title="MultiSports" tvg-logo="https://static.guiadetv.com/channel/IIxu6NiXwlVLL7Fs1cxm7VFLOeAu4TXu86wefVrG.png",CE Premiere 7 🟢
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/160
+#EXTINF:-1 tvg-id="BR - Premiere 8" tvg-name="PREMIERE 8 [FHD][HDR]" tvg-logo="https://futebolplayhd.stream/imagens-futebol/6028586b4e78a338b514316a9cf746ed.jpg" group-title="Canais | Premiere",CE Premiere 8 [FHD][HDR] 🟢
+http://pfsv.io:80/pu1411/HP5729/130240.m3u8
+
+#EXTINF:-1 tvg-id="Premiere Clubes" tvg-logo="https://imgur.com/T6VmjYB.png" group-title="Canais | PREMIERE",Premiere Clubes HD [Alterar]
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/165
+
+#EXTINF:-1 tvg-id="Premiere Clubes" tvg-logo="https://imgur.com/T6VmjYB.png" group-title="Canais | PREMIERE",Premiere Clubes UHD
+https://abc.embedmax.site/premiere1/tracks-v1a1/mono.m3u8
+
+#EXTINF:-1 tvg-id="Premiere Clubes" tvg-logo="https://imgur.com/T6VmjYB.png" group-title="Canais | PREMIERE",Premiere Clubes FHD
+https://cr7v.short.gy/manoiptvfree/PFCCLUBEHD/Index.m3u8
+
+#EXTINF:-1 tvg-id="Premiere Clubes" tvg-logo="https://imgur.com/T6VmjYB.png" group-title="Canais | PREMIERE",Premiere Clubes FHD [Alterar]
+http://cdnexpress.homelinux.net:80/live/ca5c20ae5bcb1c5f65998accf9920342/6a3cd02e803ddf024eb777f0101a2702/3.m3u8
+
+#EXTINF:-1 tvg-id="PREMIERE 2 HD" tvg-logo="https://imgur.com/Sa86nNV.png" group-title="Canais | PREMIERE",Premiere 2 HD
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/150
+
+#EXTINF:-1 tvg-id="PREMIERE 2 HD" tvg-logo="https://imgur.com/Sa86nNV.png" group-title="Canais | PREMIERE",Premiere 2 HD [Alterar]
+https://abc.embedmax.site/premiere2/tracks-v1a1/mono.m3u8
+
+#EXTINF:-1 tvg-id="PREMIERE 2 HD" tvg-logo="https://imgur.com/Sa86nNV.png" group-title="Canais | PREMIERE",Premiere 2 HD
+http://cdnexpress.homelinux.net/live/4509ef43ca4f00220fe74b66f5313a13/79b3f503998db436866e29ef5c983550/14.m3u8
+
+#EXTINF:-1 tvg-id="PREMIERE 2 HD" tvg-logo="https://imgur.com/Sa86nNV.png" group-title="Canais | PREMIERE",Premiere 2 FHD
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/149
+
+#EXTINF:-1 tvg-id="PREMIERE 3 HD" tvg-logo="https://imgur.com/vdKC1eu.png" group-title="Canais | PREMIERE",Premiere 3 HD
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/152
+
+#EXTINF:-1 tvg-id="PREMIERE 3 HD" tvg-logo="https://imgur.com/vdKC1eu.png" group-title="Canais | PREMIERE",Premiere 3 HD [Alterar]
+https://abc.embedmax.site/premiere3/tracks-v1a1/mono.m3u8
+
+#EXTINF:-1 tvg-id="PREMIERE 3 HD" tvg-logo="https://imgur.com/vdKC1eu.png" group-title="Canais | PREMIERE",Premiere 3 FHD
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/153
+
+#EXTINF:-1 tvg-id="PREMIERE 4 HD" tvg-logo="https://imgur.com/n5KKEiL.png" group-title="Canais | PREMIERE",Premiere 4 HD
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/154
+
+#EXTINF:-1 tvg-id="PREMIERE 4 HD" tvg-logo="https://imgur.com/n5KKEiL.png" group-title="Canais | PREMIERE",Premiere 4 HD [Alterar]
+https://abc.embedmax.site/premiere4/tracks-v1a1/mono.m3u8
+
+#EXTINF:-1 tvg-id="PREMIERE 4 HD" tvg-logo="https://imgur.com/n5KKEiL.png" group-title="Canais | PREMIERE",Premiere 4 FHD
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/155
+
+#EXTINF:-1 tvg-id="PREMIERE 5 HD" tvg-logo="https://imgur.com/qVVCNKG.png" group-title="Canais | PREMIERE",Premiere 5 HD
+http://izcdn.vood.top:80/hls/511_.m3u8
+
+#EXTINF:-1 tvg-id="PREMIERE 5 HD" tvg-logo="https://imgur.com/qVVCNKG.png" group-title="Canais | PREMIERE",Premiere 5 FHD
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/156
+
+#EXTINF:-1 tvg-id="PREMIERE 6" tvg-logo="https://imgur.com/4CAJWni.png" group-title="Canais | PREMIERE",Premiere 6 HD
+http://izcdn.vood.top:80/hls/517_.m3u8
+
+#EXTINF:-1 tvg-id="PREMIERE 6" tvg-logo="https://imgur.com/4CAJWni.png" group-title="Canais | PREMIERE",Premiere 6 FHD
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/158
+
+#EXTINF:-1 tvg-id="PREMIERE 7" tvg-logo="https://imgur.com/XqTjkAw.png" group-title="Canais | PREMIERE",Premiere 7 HD
+http://izcdn.vood.top:80/hls/522_.m3u8
+
+#EXTINF:-1 tvg-id="PREMIERE 7" tvg-logo="https://imgur.com/XqTjkAw.png" group-title="Canais | PREMIERE",Premiere 7 FHD
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/160
