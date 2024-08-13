@@ -184,28 +184,25 @@ footer {
 
 /* Popup de Vídeo */
 .popup {
-    display: none; /* Inicialmente ocultar */
-    justify-content: center;
-    align-items: center;
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
     z-index: 1000;
 }
 
 .popup-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
-    max-width: 90%;
-    width: 640px; /* Ajuste a largura conforme necessário */
-    max-height: 80%;
-    overflow: hidden;
+    width: 90%;
+    max-width: 600px; /* Largura máxima do pop-up */
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .popup-content video {
@@ -224,26 +221,35 @@ footer {
     max-width: 1200px;
 }
 
-/* Estilo para os botões de categoria (gêneros) */
+/* Ajuste do tamanho do botão de categoria */
 .m3u-category-btn {
-    flex: 1 1 calc(16.66% - 10px); /* 6 colunas, considerando o espaçamento */
-    box-sizing: border-box;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    text-align: center;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    background: #f5f5f5;
+    cursor: pointer;
 }
 
-/* Estilo para as imagens dentro dos botões de categoria */
 .m3u-category-btn img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
+    max-width: 40px;
+    max-height: 40px;
+    margin-right: 10px;
+}
+
+/* Ajuste para lista de canais */
+.channel-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.channel-item img {
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 10px;
 }
 
 /* Estilo para a seção de canais dentro de cada categoria */
@@ -442,13 +448,21 @@ footer {
 
 
 
+/* Estilo para o player de vídeo */
 .video-container {
-    width: 70%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    background-color: #000;
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding-top: 56.25%; /* Aspect Ratio 16:9 */
+    background-color: #000; /* Cor de fundo para o vídeo */
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .video-js {
