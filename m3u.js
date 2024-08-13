@@ -201,20 +201,15 @@ function displayChannels(channels) {
 // Função de busca
 document.getElementById('search-button').addEventListener('click', async function() {
     const query = document.getElementById('search-input').value.toLowerCase().trim();
-    const channels = await loadM3U('caminho/para/seu/arquivo.m3u'); // Atualize o caminho do arquivo
+    const channels = await loadM3U('https://drive.google.com/file/d/18mpJ99cJdSTMP2Da8rPvmIRpFvT9gtKL/view?usp=sharing'); // Atualize com o link direto
     displayChannels(channels);
-
-    // Função para rolar para o elemento visível
-    function scrollToElement(element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
 
     // Limpar destaques e rolar para o item correspondente
     let found = false;
     document.querySelectorAll('#categories-container .channel').forEach(channel => {
-        if (channel.dataset.name.toLowerCase().includes(query)) {
+        if (channel.dataset.name.includes(query)) {
             channel.classList.add('highlight');
-            scrollToElement(channel);
+            channel.scrollIntoView({ behavior: 'smooth', block: 'center' });
             found = true;
         } else {
             channel.classList.remove('highlight');
@@ -225,4 +220,5 @@ document.getElementById('search-button').addEventListener('click', async functio
         alert('Nenhum canal encontrado.');
     }
 });
+
 
