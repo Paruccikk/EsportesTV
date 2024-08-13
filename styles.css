@@ -44,14 +44,14 @@ header h1 {
 }
 
 .banner {
-    width: 100%;
+    width: 70%;
     margin: 20px 0;
     display: flex;
     justify-content: center;
 }
 
 .banner img {
-    width: 110%; /* Estica a imagem horizontalmente em 20% */
+    width: 90%; /* Estica a imagem horizontalmente em 20% */
     height: auto; /* Mantém a proporção da altura */
     border-radius: 10px;
 }
@@ -258,26 +258,7 @@ footer {
 }
 
 /* Estilo para cada item de canal */
-.channel-item {
-    flex: 1 1 calc(16.66% - 10px); /* Ajusta para colunas, considerando o espaçamento */
-    box-sizing: border-box;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    cursor: pointer;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-/* Estilo para as imagens dentro dos itens de canal */
-.channel-item img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
 
 /* Contêiner de botões de categorias fixo */
 /* Grade de categorias */
@@ -320,25 +301,7 @@ footer {
     margin-top: 20px;
 }
 
-/* Item de canal */
-.channel-item {
-    background-color: #e0e0e0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 5px; /* Diminuído para telas menores */
-    cursor: pointer;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-/* Imagem do canal */
-.channel-item img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 5px; /* Diminuído para telas menores */
-}
 
 /* Responsividade para telas menores */
 @media (max-width: 1200px) {
@@ -434,24 +397,87 @@ footer {
     gap: 10px;
 }
 
-/* Estilo do item do canal JSON */
-.channel-item {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 150px;
+
+
+#search-container {
+    margin: 20px;
+    text-align: center;
+}
+
+#search-input {
+    padding: 10px;
+    width: 300px;
+    font-size: 16px;
+}
+
+#search-button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.popup-inner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.channel-list-container {
+    width: 30%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    background-color: #f1f1f1;
+    overflow: hidden; /* Para garantir que a rolagem aconteça apenas na lista */
+}
+
+/* Estilo dos botões de rolagem */
+
+
+/* Contêiner dos canais */
+.channel-list {
+    overflow-y: auto;
+    max-height: 500px; /* Ajuste conforme necessário */
+    position: relative;
+}
+
+
+
+.video-container {
+    width: 70%;
+    display: flex;
+    justify-content: center;
     align-items: center;
     padding: 10px;
+    background-color: #000;
+}
+
+.video-js {
+    width: 100%;
+    height: auto;
+}
+
+.channel-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-sizing: border-box;
 }
 
 .channel-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.video-container {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #000;
+}
+
+.highlight {
+    background-color: yellow;
 }

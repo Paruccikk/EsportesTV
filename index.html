@@ -10,12 +10,12 @@
     <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet">
     <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
     
+    
 </head>
 <body>
     <!-- Cabeçalho -->
     <header>
         <h1>Esportes TV Brasil </h1>
-        <button class="menu-btn" onclick="openMenu()">Menu</button>
     </header>
 
     <!-- Banner -->
@@ -24,6 +24,29 @@
     </div>
     
 
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Pesquisar canais..." />
+        <button id="search-button">Pesquisar</button>
+    </div>
+
+    <br><br><br>
+    <!-- Texto de divisória de player de anuncios -->
+    <div>
+        
+        <h1> Players sem Anúncios </h1>
+
+    </div>
+
+
+    <br><br>
+    <!-- Contêiner de Categorias e Canais (M3U) -->
+
+    <div id="categories-container">
+        <!-- Categorias serão inseridas aqui -->
+    </div>
+
+    <br><br><br>
+            <h1> Players com Anúncios </h1>
     <!-- Contêiner de Categorias (JSON) -->
     <div id="category-container" class="category-buttons">
         <!-- Botões de Categorias (JSON) serão adicionados aqui -->
@@ -34,26 +57,7 @@
         <!-- Botões de Canais (JSON) serão adicionados aqui -->
     </div>
 
-
     <br><br>
-    <!-- Texto de divisória de player de anuncios -->
-    <div>
-
-        <h1> Players sem Anúncios </h1>
-
-    </div>
-
-    <br><br>
-    <!-- Contêiner de Categorias e Canais (M3U) -->
-
-    <div id="categories-container">
-        <!-- Categorias serão inseridas aqui -->
-    </div>
-
-    <!-- Espaço para exibir canais quando uma categoria é clicada -->
-    <div id="channels-container">
-        <!-- Canais de uma categoria selecionada serão exibidos aqui -->
-    </div>
 
 
     <!-- Pop-up para reprodução de vídeo -->
@@ -139,7 +143,7 @@
 
         <script src="json.js"></script>
         <script src="m3u.js"></script>
-        <script src="loadChannels.js"></script>
+        <script src="hls.js"></script>
         <script src="https://vjs.zencdn.net/7.11.4/video.js"></script> <!-- Biblioteca Video.js -->
         <script src="https://cdn.jsdelivr.net/npm/shaka-player@latest/dist/shaka-player.ui.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>

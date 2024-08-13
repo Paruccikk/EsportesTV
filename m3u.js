@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             const categoriesContainer = document.getElementById('categories-container');
-            const channelsContainer = document.getElementById('channels-container');
 
             for (const [category, channels] of Object.entries(m3uCategories)) {
                 const categoryButton = document.createElement('button');
@@ -46,89 +45,100 @@ document.addEventListener('DOMContentLoaded', function() {
                     ${category}
                 `;
                 categoryButton.addEventListener('click', () => {
-                    showChannels(category, channels);
+                    showChannelsInPopup(category, channels);
                 });
 
                 categoriesContainer.appendChild(categoryButton);
             }
 
-            function showChannels(category, channels) {
-                // Limpar canais existentes
-                channelsContainer.innerHTML = '';
+            function showChannelsInPopup(category, channels) {
+                closePopup();
 
-                // Criar seção para canais
-                const categorySection = document.createElement('div');
-                categorySection.className = 'category-section';
+                const popup = document.createElement('div');
+                popup.className = 'popup';
+                popup.innerHTML = `
+                    <div class="popup-content">
+                        <button class="close-btn" onclick="closePopup()">×</button>
+                        <div class="popup-inner">
+                            <div id="channel-list" class="channel-list">
+                                ${channels.map(channel => `
+                                    <div class="channel-item" data-url="${channel.url}">
+                                        <img src="${channel.logo}" alt="${channel.name}" onerror="this.src='https://via.placeholder.com/100'" />
+                                        <span>${channel.name}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class="video-container">
+                                <video id="video-player" class="video-js vjs-default-skin" controls autoplay width="100%" height="auto">
+                                    Seu navegador não suporta a tag de vídeo.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(popup);
 
-                channels.forEach(channel => {
-                    const channelItem = document.createElement('div');
-                    channelItem.className = 'channel-item';
-                    channelItem.innerHTML = `
-                        <img src="${channel.logo}" alt="${channel.name}" onerror="this.src='https://via.placeholder.com/100'" />
-                        <span>${channel.name}</span>
-                    `;
-                    channelItem.addEventListener('click', () => {
-                        openVideo(channel.url);
+                const player = document.getElementById('video-player');
+                const firstChannel = channels[0];
+
+                // Carregar o primeiro canal da categoria no player
+                loadVideo(player, firstChannel.url);
+
+                // Adicionar evento de clique aos canais para trocar o vídeo no player
+                document.querySelectorAll('.channel-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        const url = this.getAttribute('data-url');
+                        loadVideo(player, url);
                     });
-
-                    categorySection.appendChild(channelItem);
                 });
 
-                channelsContainer.appendChild(categorySection);
-                categorySection.style.display = 'grid'; // Exibir canais
+                popup.addEventListener('click', (event) => {
+                    if (event.target === popup) {
+                        closePopup();
+                    }
+                });
 
-                // Rolar a página para a grade de canais
-                channelsContainer.scrollIntoView({ behavior: 'smooth' });
+                popup.style.display = 'flex';
+            }
+
+            function loadVideo(player, url) {
+                // Verificar se a URL termina com .m3u8
+                if (url.endsWith('.m3u8')) {
+                    if (Hls.isSupported()) {
+                        const hls = new Hls();
+                        hls.loadSource(url);
+                        hls.attachMedia(player);
+                        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                            player.play();
+                        });
+                        hls.on(Hls.Events.ERROR, (event, data) => {
+                            console.error('HLS Error:', data);
+                        });
+                    } else if (player.canPlayType('application/vnd.apple.mpegurl')) {
+                        player.src = url;
+                        player.addEventListener('loadedmetadata', () => {
+                            player.play();
+                        });
+                    } else {
+                        console.error('HLS is not supported in this browser.');
+                    }
+                } else {
+                    // Para .mp4 e .ts
+                    player.src = url;
+                    player.addEventListener('loadedmetadata', () => {
+                        player.play();
+                    });
+                }
             }
         });
 
     document.addEventListener('click', function(event) {
         const target = event.target;
-        if (!target.closest('.m3u-category-btn') && !target.closest('#channels-container')) {
+        if (!target.closest('.m3u-category-btn') && !target.closest('.popup-content')) {
             closeAllCategories();
         }
     });
 });
-
-function openVideo(url) {
-    closePopup();
-
-    const popup = document.createElement('div');
-    popup.className = 'popup';
-    popup.innerHTML = `
-        <div class="popup-content">
-            <button class="close-btn" onclick="closePopup()">×</button>
-            <video id="video-player" class="video-js vjs-default-skin" controls autoplay width="100%" height="auto">
-                Seu navegador não suporta a tag de vídeo.
-            </video>
-        </div>
-    `;
-    document.body.appendChild(popup);
-
-    fetch(url, { mode: 'no-cors' })
-        .then(response => {
-            // Como a resposta é "opaca", você não terá acesso ao conteúdo.
-            // Ainda assim, você pode tentar usá-la.
-            return response.blob();
-        })
-        .then(blob => {
-            const videoUrl = URL.createObjectURL(blob);
-            const player = document.getElementById('video-player');
-            player.src = videoUrl;
-            player.play();
-        })
-        .catch(error => {
-            console.error('Failed to load video:', error);
-        });
-
-    popup.addEventListener('click', (event) => {
-        if (event.target === popup) {
-            closePopup();
-        }
-    });
-
-    popup.style.display = 'flex';
-}
 
 function closePopup() {
     const popup = document.querySelector('.popup');
@@ -147,3 +157,72 @@ function closeAllCategories() {
         section.style.display = 'none';
     });
 }
+
+// Função para carregar e processar o arquivo .m3u
+async function loadM3U(url) {
+    try {
+        const response = await fetch(url);
+        const text = await response.text();
+        const lines = text.split('\n');
+        const channels = [];
+        let currentChannel = null;
+
+        lines.forEach(line => {
+            if (line.startsWith('#EXTINF:')) {
+                const name = line.split(',')[1];
+                currentChannel = { name };
+            } else if (line.startsWith('http') && currentChannel) {
+                currentChannel.url = line;
+                channels.push(currentChannel);
+                currentChannel = null;
+            }
+        });
+
+        return channels;
+    } catch (error) {
+        console.error('Erro ao carregar o arquivo M3U:', error);
+        return [];
+    }
+}
+
+// Função para exibir canais
+function displayChannels(channels) {
+    const container = document.getElementById('categories-container');
+    container.innerHTML = ''; // Limpar o conteúdo anterior
+    channels.forEach(channel => {
+        const div = document.createElement('div');
+        div.className = 'channel';
+        div.dataset.name = channel.name;
+        div.textContent = channel.name;
+        container.appendChild(div);
+    });
+}
+
+// Função de busca
+document.getElementById('search-button').addEventListener('click', async function() {
+    const query = document.getElementById('search-input').value.toLowerCase().trim();
+    const channels = await loadM3U('caminho/para/seu/arquivo.m3u'); // Atualize o caminho do arquivo
+    displayChannels(channels);
+
+    // Função para rolar para o elemento visível
+    function scrollToElement(element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Limpar destaques e rolar para o item correspondente
+    let found = false;
+    document.querySelectorAll('#categories-container .channel').forEach(channel => {
+        if (channel.dataset.name.toLowerCase().includes(query)) {
+            channel.classList.add('highlight');
+            scrollToElement(channel);
+            found = true;
+        } else {
+            channel.classList.remove('highlight');
+        }
+    });
+
+    if (!found) {
+        alert('Nenhum canal encontrado.');
+    }
+});
+
