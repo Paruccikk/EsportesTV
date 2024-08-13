@@ -205,11 +205,81 @@ https://cnn-cnninternational-1-eu.rakuten.wurl.tv/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/05S3yYZ.png" group-title="Canais | INTERNACIONAL",CNN EUA
 https://dhzhj55w8hou6.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-bmoob4iijm59i/index.m3u8
 
-#EXTINF:-1 tvg-id="Band.br" tvg-logo="https://i.imgur.com/1r5T6Pw.png" group-title="General" user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0",Band (1080p) [Geo-blocked]
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0
-https://evpp.mm.uol.com.br/geob_band/app/playlist.m3u8
-#EXTINF:-1 tvg-id="BandMinasGerais.br" tvg-logo="https://i.imgur.com/hy7abJz.png" group-title="General",Band Minas (720p) [Not 24/7]
-http://evpp.mm.uol.com.br:1935/bandpracas/debatemg/playlist.m3u8
-#EXTINF:-1 tvg-id="BandNews.br" tvg-logo="https://i.ibb.co/0jVZBFp/u8ya-iw-R-400x400.jpg" group-title="News" user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0",Bandnews (720p) [Geo-blocked]
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0
-https://evpp.mm.uol.com.br/geob_band/bandnewstv/playlist.m3u8
+#EXTINF:-1 tvg-id="BANDNEWS" tvg-name="BANDNEWS" group-title="Noticias" tvg-logo="https://static.guiadetv.com/channel/LTyY9kIRCaLD7WsNzFzjz4mCEBgIbOwsrlN0L0WW.png",Banda CN Novidades 🟢
+https://d1r94zrwa3gnlo.cloudfront.net/livestore102/stream/hls/276/276-3-main.m3u8
+#EXTINF:-1 tvg-name="CNNBRASIL" tvg-id="CNNBRASIL" group-title="Noticias" tvg-logo="https://static.guiadetv.com/channel/yvn5yE3HZJJsx3vxT5g4eGlvo9ofpLuOu9o9cFmF.png",CN CNN Brasil 🟢
+https://d25usgadhphvwi.cloudfront.net/hls/main.m3u8
+#EXTINF:-1 tvg-id="GLOBONEWS" tvg-name="GLOBONEWS" group-title="Noticias" tvg-logo="https://gkpb.com.br/wp-content/uploads/2022/08 /novo-logo-globonews-2022jpg.jpg",CN Globo News 🟢
+https://abc.embedmax.site/globonews/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-id="JOVEMPANNEWS" tvg-name="JOVEMPANNEWS" group-title="Noticias" tvg-logo="https://static.guiadetv.com/channel/mUg3QjceZ1q2vtKIQlh6j0y8Pqs9udn4F0qGfqAs.png",CN Jobem Pan Notícias 🟢
+https://d6yfbj4xxtrod.cloudfront.net/out/v1/7836eb391ec24452b149f3dc6df15bbd/index_10.m3u8
+#EXTINF:-1 tvg-name="RECORDNEWS" tvg-id="RECORDNEWS" group-title="Noticias" tvg-logo="https://static.guiadetv.com/channel/fWKQ5LEAdazLVIDIQdLokT6IBRoPxF2GehQonaNI.png",Registro CN Novidades 🟢
+https://cdn-1.nxplay.com.br/BAND_NEWS_TK/tracks-v1a1/mono.m3u8
+
+#EXTINF:-1 tvg-id="BAND" tvg-logo="https://imgur.com/xYGjfh8.png" group-title="Canais | BAND TV",Band BA- N é 24h  
+https://ythls.armelin.one/channel/UClXz2Nus3ASfscB60dC5gxQ.m3u8
+
+#EXTINF:-1 tvg-id="BAND" tvg-name="BAND" tvg-logo="https://imgur.com/xYGjfh8.png" group-title="Canais | BAND TV",Band RJ - N é 24h
+https://ythls.armelin.one/channel/UCzQxHUiLa5prpJoyOxS0GSA.m3u8
+
+#EXTINF:-1 tvg-id="BANDA" tvg-name="BANDA" tvg-logo="https://imgur.com/xYGjfh8.png" group-title="Canais | BAND TV",Banda SP SD
+https://cdn-3.nxplay.com.br/BAND_HD_PFZ_NX/tracks-v1a1/mono.m3u8?ManoTV
+
+#EXTINF:-1tvg-id="BAND" tvg-name="BAND" tvg-logo="https://imgur.com/xYGjfh8.png" group-title="Canais | BAND TV",Band SP HD
+https://cdn-3.nxplay.com.br/BAND_HD_PFZ_NX/index.m3u8?ManoTV
+
+#EXTINF:-1 tvg-id="BAND" tvg-logo="https://imgur.com/xYGjfh8.png" group-title="Canais | BAND TV",Band MG FHD
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/481
+
+#EXTINF:-1 tvg-id="BAND" tvg-logo="https://imgur.com/xYGjfh8.png" group-title="Canais | BAND TV",Band Nordeste
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/483
+
+#EXTINF:-1 tvg-id="BAND" tvg-logo="https://i.imgur.com/yyFeDm7.png" group-title="Canais | BAND TV",Band Arapuan HD
+https://5b7f3c45ab7c2.streamlock.net/arapuan/ngrp:arapuan_all/chunklist.m3u8
+
+#EXTINF:-1 tvg-id="BAND" tvg-logo="https://i.imgur.com/oTkOmnH.png" group-title="Canais | BAND TV",Band TV - Vale do Uruará SD
+https://stmv1.paineltv.net/valeradiowebtv/valeradiowebtv/chunklist_w1873032931.m3u8?ManoTV
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://imgur.com/vSKVrvH.png" group-title="Canais | BAND TV",NOVO BRASIL HD
+https://cc-7pakstinpyajo.akamaized.net/playlist720lp.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://imgur.com/vSKVrvH.png" group-title="Canais | BAND TV",NOVO BRASIL FHD
+https://cc-7pakstinpyajo.akamaized.net/playlist1080p.m3u8
+
+#EXTINF:-1 tvg-id="BAND SPORTS" tvg-name="BAND SPORTS" tvg-logo="https://i.imgur.com/LSZ5VKi.png" group-title="Canais | ESPORTES", Banda Esportiva SD
+https://cdn-4.nxplay.com.br/BAND_SPORTS/tracks-v1a1/mono.m3u8
+
+#EXTINF:-1 tvg-id="BAND SPORTS" tvg-name="BAND SPORTS" tvg-logo="https://i.imgur.com/LSZ5VKi.png" group-title="Canais | ESPORTES", Banda Esportes HD
+https://cdn-4.nxplay.com.br/BAND_SPORTS/tracks-v2a1/mono.m3u8
+
+#EXTINF:-1 tvg-id="BAND SPORTS" tvg-name="BAND SPORTS" tvg-logo="https://i.imgur.com/LSZ5VKi.png" group-title="Canais | ESPORTES", Banda Esportiva UHD
+https://d1r94zrwa3gnlo.cloudfront.net/livestore103/stream/hls/290/290.m3u8
+
+#EXTINF:-1 tvg-id="Combate HD" tvg-name="CombateHD" tvg-logo="https://imgur.com/HIiZUQN.png" group-title="Canais | LUTAS",Combate HD
+http://xp2.hostinggonemoreso10.com:2082/Tourobox2-1eWW8CdoQ7/crhok9FK7Q/123
+
+#EXTINF:-1 tvg-id="Combate HD" tvg-name="CombateHD" tvg-logo="https://imgur.com/HIiZUQN.png" group-title="Canais | LUTAS",Combate FHD
+https://abc.embedmax.site/combate/tracks-v1a1/mono.m3u8
+
+#EXTINF:-1 tvg-id="BANDNEWS" tvg-name="BANDNEWS" tvg-logo="https://imgur.com/jCZzNjF.png" group-title="Canais | NOTÍCIAS",Band News SD
+https://cdn-4.nxplay.com.br/BAND_NEWS_TK/tracks-v1a1/mono.m3u8?ManoTV
+
+#EXTINF:-1 tvg-name="Band" tvg-id="" tvg-country="Brazil" tvg-language="Portuguese" tvg-logo="https://epg.pw/media/images/channel/2022/05/06/large/20220506174314612171_11.png" group-title="News",[VGA]band sp 1
+https://stream1.freetv.fun/band-sp-1-1.m3u8
+#EXTINF:-1 tvg-name="Band" tvg-id="" tvg-country="Brazil" tvg-language="Portuguese" tvg-logo="https://epg.pw/media/images/channel/2022/05/06/large/20220506174314612171_11.png" group-title="News",[HD]band
+https://stream1.freetv.fun/band-1.m3u8
+#EXTINF:-1 tvg-name="Band" tvg-id="" tvg-country="Brazil" tvg-language="Portuguese" tvg-logo="https://epg.pw/media/images/channel/2022/05/06/large/20220506174314612171_11.png" group-title="News",[BD]band mg
+https://stream1.freetv.fun/band-mg-1.m3u8
+#EXTINF:-1 tvg-name="Band Sports" tvg-id="289938" tvg-country="Brazil" tvg-language="Portuguese" tvg-logo="https://epg.pw/media/images/channel/2023/11/05/large/20231105222730944950_63.png" group-title="Sports",[HD]band sports
+https://stream1.freetv.fun/band-sports-2.ctv
+#EXTINF:-1 tvg-name="Band Sports" tvg-id="289938" tvg-country="Brazil" tvg-language="Portuguese" tvg-logo="https://epg.pw/media/images/channel/2023/11/05/large/20231105222730944950_63.png" group-title="Sports",[HD]band sports
+https://stream1.freetv.fun/band-sports-1.m3u8
+
+#EXTINF:-1 tvg-name="Band Sports" tvg-id="289938" tvg-country="Brazil" tvg-language="Portuguese" tvg-logo="https://epg.pw/media/images/channel/2023/11/05/large/20231105222730944950_63.png" group-title="Brazil",[HD]band sports
+https://stream1.freetv.fun/band-sports-2.ctv
+#EXTINF:-1 tvg-name="Band Sports" tvg-id="289938" tvg-country="Brazil" tvg-language="Portuguese" tvg-logo="https://epg.pw/media/images/channel/2023/11/05/large/20231105222730944950_63.png" group-title="Brazil",[HD]band sports
+https://stream1.freetv.fun/band-sports-1.m3u8
+#EXTINF:-1 tvg-name="Band Sports" tvg-id="289938" tvg-country="Brazil" tvg-language="Portuguese" tvg-logo="https://epg.pw/media/images/channel/2023/11/05/large/20231105222730944950_63.png" group-title="Brazil",[HD]band sports
+https://stream1.freetv.fun/band-sports-2.ctv
+#EXTINF:-1 tvg-name="Band Sports" tvg-id="289938" tvg-country="Brazil" tvg-language="Portuguese" tvg-logo="https://epg.pw/media/images/channel/2023/11/05/large/20231105222730944950_63.png" group-title="Brazil",[HD]band sports
+https://stream1.freetv.fun/band-sports-1.m3u8
