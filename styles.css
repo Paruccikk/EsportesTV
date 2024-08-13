@@ -57,81 +57,75 @@ nav {
     color: #25da11; /* Cor ao passar o mouse */
 }
 
-/* Menu móvel */
+/* Estilo para o menu de navegação em dispositivos móveis */
+/* Estilo para o menu de navegação em dispositivos móveis */
 .mobile-menu {
-    display: none; /* Oculta o menu móvel por padrão */
-    cursor: pointer; /* Adiciona um cursor de mão ao passar o mouse */
+    display: none; /* Inicialmente escondido */
+    cursor: pointer;
+    /* Estilize suas linhas aqui */
 }
 
-.mobile-menu div {
-    width: 32px;
-    height: 2px;
-    background: #fff; /* Cor das linhas do menu móvel */
-    margin: 6px 0; /* Espaço entre as linhas */
-    transition: 0.3s; /* Transição suave para animações */
+.mobile-menu .line1, .mobile-menu .line2, .mobile-menu .line3 {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: 0.3s;
 }
 
-/* Estilo do menu móvel ativo */
-.nav-list.active {
-    transform: translateX(0);
-}
-
-/* Transição dos links de navegação */
-@keyframes navLinkFade {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Estilos do menu móvel ativo */
-.mobile-menu.active .line1 {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.mobile-menu.active .line2 {
-    opacity: 0;
-}
-
-.mobile-menu.active .line3 {
-    transform: rotate(45deg) translate(-5px, -6px);
-}
-
-/* Estilos de cabeçalho */
-header h1 {
-    margin: 0;
-    font-size: 24px; /* Tamanho da fonte do título */
-}
-
-/* Responsividade */
+/* Exibir o menu em telas pequenas */
 @media (max-width: 768px) {
-    .nav-list {
-        position: absolute;
-        top: 8vh;
-        right: 0;
-        width: 50vw;
-        height: 40vh;
-        background: #23232ecc; /* Cor de fundo do menu móvel */
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in;
-    }
-    
-    .nav-list li {
-        margin-left: 0;
-        opacity: 0; /* Torna os itens invisíveis inicialmente */
+    .mobile-menu {
+        display: block;
     }
 
-    .mobile-menu {
-        display: block; /* Exibe o menu móvel */
+    .nav-list {
+        display: none; /* Inicialmente escondido */
+        flex-direction: column;
+        width: 100%;
+        background-color: #fff; /* Cor de fundo do menu */
+        position: absolute;
+        top: 60px; /* Ajuste conforme necessário */
+        left: 0;
+        z-index: 1000;
+        padding: 10px 0; /* Espaçamento interno do menu */
+    }
+
+    .nav-list.active {
+        display: flex;
+    }
+
+    .mobile-menu.active .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .mobile-menu.active .line2 {
+        opacity: 0;
+    }
+
+    .mobile-menu.active .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .nav-list li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .nav-list a {
+        color: #333; /* Cor do texto dos links */
+        text-decoration: none;
+        font-size: 18px;
+        display: block; /* Garante que o link ocupe toda a largura disponível */
+        padding: 10px; /* Espaçamento interno dos links */
+    }
+
+    .nav-list a:hover {
+        background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
+        color: #007bff; /* Cor do texto ao passar o mouse */
     }
 }
+
 
 @media (max-width: 999px) {
     body {
